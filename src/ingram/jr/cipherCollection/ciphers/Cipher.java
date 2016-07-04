@@ -1,3 +1,4 @@
+package ingram.jr.cipherCollection.ciphers;
 
 public abstract class Cipher {
 	protected final String[] alphabet;
@@ -6,39 +7,38 @@ public abstract class Cipher {
 	
 	public Cipher(){
 		alphabet = new String[26];
-		alphabet[0]  = "a";
-		alphabet[1]  = "b";
-		alphabet[2]  = "c";
-		alphabet[3]  = "d";
-		alphabet[4]  = "e";
-		alphabet[5]  = "f";
-		alphabet[6]  = "g";
-		alphabet[7]  = "h";
-		alphabet[8]  = "i";
-		alphabet[9]  = "j";
-		alphabet[10]  = "k";
-		alphabet[11]  = "l";
-		alphabet[12]  = "m";
-		alphabet[13]  = "n";
-		alphabet[14]  = "o";
-		alphabet[15]  = "p";
-		alphabet[16]  = "q";
-		alphabet[17]  = "r";
-		alphabet[18]  = "s";
-		alphabet[19]  = "t";
-		alphabet[20]  = "u";
-		alphabet[21]  = "v";
-		alphabet[22]  = "w";
-		alphabet[23]  = "x";
-		alphabet[24]  = "y";
-		alphabet[25]  = "z";
+		alphabet[0]  = "A";
+		alphabet[1]  = "B";
+		alphabet[2]  = "C";
+		alphabet[3]  = "D";
+		alphabet[4]  = "E";
+		alphabet[5]  = "F";
+		alphabet[6]  = "G";
+		alphabet[7]  = "H";
+		alphabet[8]  = "I";
+		alphabet[9]  = "J";
+		alphabet[10]  = "K";
+		alphabet[11]  = "L";
+		alphabet[12]  = "M";
+		alphabet[13]  = "N";
+		alphabet[14]  = "O";
+		alphabet[15]  = "P";
+		alphabet[16]  = "Q";
+		alphabet[17]  = "R";
+		alphabet[18]  = "S";
+		alphabet[19]  = "T";
+		alphabet[20]  = "U";
+		alphabet[21]  = "V";
+		alphabet[22]  = "W";
+		alphabet[23]  = "X";
+		alphabet[24]  = "Y";
+		alphabet[25]  = "Z";
 	}
 	
 	public abstract void encrypt(String word);
 	
 	//Splits the words into individual characters.
 	public void setWordCharacters(String word){
-			word = word.replaceAll("[^a-zA-Z]", "").toLowerCase();
 			wordCharacters = word.split("");		
 	}
 	

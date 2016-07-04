@@ -1,32 +1,31 @@
+package ingram.jr.cipherCollection;
+import ingram.jr.cipherCollection.ciphers.Atbash;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
+import javax.swing.JOptionPane;
 
-public class CollectionGUI {
+
+
+public class CollectionGUI{
 	//Relevant to all sections.
 	private JTabbedPane tabs;
 	private JFrame mainframe;
 	private JLabel inputHeader;
 	private JLabel outputHeader;
-	private JPanel buttonPanel;
-	private JButton	encryptButton;
-	private JButton quitButton;
 	private JPanel atbashPanel;
 	
 	public CollectionGUI(){
 		mainframe = new JFrame("Cipher Collection");
-		buttonPanel = new JPanel(new FlowLayout());
 		inputHeader = new JLabel("Input:");
 		outputHeader = new JLabel("Output:");
-		encryptButton = new JButton("Encrypt");
-		quitButton = new JButton("Quit");
-		buttonPanel.add(encryptButton);
-		buttonPanel.add(quitButton);
 		tabs = new JTabbedPane();
 		createAtbashDisplay();
 		tabs.add("Atbash", atbashPanel);
@@ -35,16 +34,42 @@ public class CollectionGUI {
 		mainframe.setVisible(true);
 	}
 	
+	/** Adds the JButtons to the buttonPanel.
+	 * 	Adds tool tips to both buttons and adds the ActionListener to the quit button. 
+	 * 
+	 * @param buttonPanel The specific panel the buttons will belong to.
+	 * @param encrypt The encryption JButton.
+	 * @param quit The quit JButton.
+	 */
+	private void createButtons(JPanel buttonPanel, JButton encrypt, JButton quit){
+		buttonPanel.add(encrypt);
+		encrypt.setToolTipText("Encrypts the Input text.");
+		buttonPanel.add(quit);
+		quit.setToolTipText("Quits the program.");
+		quit.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				int quit = JOptionPane.showConfirmDialog(mainframe,"Are you sure you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				if(quit == 0){
+					System.exit(0);
+				}
+			}
+		});
+	}
+	
 	//Creates the tab for the Atbash display
 	private void createAtbashDisplay(){
-		//Atbash
+		Atbash atbash = new Atbash();
 		atbashPanel = new JPanel(new BorderLayout());
 		JPanel atbashIO = new JPanel(new BorderLayout());
 		JPanel atbashInput = new JPanel(new BorderLayout());
 		JPanel atbashOutput = new JPanel(new BorderLayout());
+		JPanel buttonPanel = new JPanel(new FlowLayout());
 		JLabel atbashExplanation = new JLabel("Substitutes 'A' for 'Z', 'B' for 'Y', 'C' for 'X' ect.");
 		JTextArea atbashInputBox = new JTextArea("Input");
-		JTextArea atbashOutputBox = new JTextArea("rmkfg");
+		atbash.encrypt(atbashInputBox.getText());
+		JTextArea atbashOutputBox = new JTextArea(atbash.getEncryptedWord());
+		JButton encryptButton = new JButton("Encrypt"); 
+		JButton quitButton = new JButton("Quit");
 		atbashOutputBox.setEditable(false);
 		atbashInputBox.setRows(3);
 		atbashOutputBox.setRows(3);
@@ -58,8 +83,16 @@ public class CollectionGUI {
 		atbashIO.add(atbashOutput, BorderLayout.CENTER);
 		atbashOutput.add(outputHeader, BorderLayout.NORTH);
 		atbashOutput.add(atbashOutputBox, BorderLayout.CENTER);
-		
+				
 		atbashPanel.add(atbashIO, BorderLayout.CENTER);
+		
+		createButtons(buttonPanel, encryptButton, quitButton);
+		encryptButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				atbash.encrypt(atbashInputBox.getText());
+				atbashOutputBox.setText(atbash.getEncryptedWord());
+			}
+		});
 		atbashPanel.add(buttonPanel, BorderLayout.SOUTH);
 	}
 

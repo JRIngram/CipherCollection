@@ -1,3 +1,4 @@
+package ingram.jr.cipherCollection.ciphers;
 
 public class Atbash extends Cipher {
 	private String[] reverseAlphabet;
@@ -10,18 +11,19 @@ public class Atbash extends Cipher {
 	
 	public void encrypt(String word){
 		StringBuilder sb = new StringBuilder();
-		setWordCharacters(word);
+		setWordCharacters(word.toUpperCase());
 		for(int i = 0; i < wordCharacters.length; i++){
-			System.out.print(wordCharacters[i]);
+			boolean matched = false;
 			for(int c = 0; c < alphabet.length; c++){
-				if(wordCharacters[i].equals(getAlphabetLetter(c))){
+				if(wordCharacters[i].equals(getAlphabetLetter(c).toUpperCase())){
+					//Isn't being called! Workout pls!
 					sb.append(getReverseAlphabetLetter(c));
-					System.out.println(" = " + getReverseAlphabetLetter(c));
+					matched = true;
 					break;
 				}
-				else{
-					sb.append("");
-				}
+			}
+			if(!matched){
+				sb.append(wordCharacters[i]);
 			}
 		}
 		setEncryptedWord(sb.toString());
