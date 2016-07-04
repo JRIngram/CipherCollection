@@ -41,9 +41,11 @@ public class CollectionGUI{
 	 * @param encrypt The encryption JButton.
 	 * @param quit The quit JButton.
 	 */
-	private void createButtons(JPanel buttonPanel, JButton encrypt, JButton quit){
+	private void createButtons(JPanel buttonPanel, JButton encrypt, JButton decrypt ,JButton quit){
 		buttonPanel.add(encrypt);
-		encrypt.setToolTipText("Encrypts the Input text.");
+		encrypt.setToolTipText("Encrypts the current input text.");
+		buttonPanel.add(decrypt);
+		decrypt.setToolTipText("Decrypts the current output text.");
 		buttonPanel.add(quit);
 		quit.setToolTipText("Quits the program.");
 		quit.addActionListener(new ActionListener(){
@@ -69,6 +71,7 @@ public class CollectionGUI{
 		atbash.encrypt(atbashInputBox.getText());
 		JTextArea atbashOutputBox = new JTextArea(atbash.getEncryptedWord());
 		JButton encryptButton = new JButton("Encrypt"); 
+		JButton decryptButton = new JButton("Decrypt");
 		JButton quitButton = new JButton("Quit");
 		atbashOutputBox.setEditable(false);
 		atbashInputBox.setRows(3);
@@ -86,10 +89,18 @@ public class CollectionGUI{
 				
 		atbashPanel.add(atbashIO, BorderLayout.CENTER);
 		
-		createButtons(buttonPanel, encryptButton, quitButton);
+		createButtons(buttonPanel, encryptButton, decryptButton, quitButton);
 		encryptButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				atbash.encrypt(atbashInputBox.getText());
+				atbashOutputBox.setText(atbash.getEncryptedWord());
+			}
+		});
+		
+		decryptButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				atbashInputBox.setText(atbash.getEncryptedWord());
+				atbash.encrypt(atbash.getEncryptedWord());
 				atbashOutputBox.setText(atbash.getEncryptedWord());
 			}
 		});

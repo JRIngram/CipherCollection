@@ -29,6 +29,10 @@ public class Atbash extends Cipher {
 		setEncryptedWord(sb.toString());
 	}
 	
+	public void decrypt(String encryptedWord){
+		encrypt(encryptedWord);
+	}
+	
 	public void setReverseAlphabet(){
 		int reverseCount = 0;
 		for(int i = 25; i >= 0; i--){

@@ -37,6 +37,8 @@ public abstract class Cipher {
 	
 	public abstract void encrypt(String word);
 	
+	public abstract void decrypt(String encryptedWord);
+	
 	//Splits the words into individual characters.
 	public void setWordCharacters(String word){
 			wordCharacters = word.split("");		
