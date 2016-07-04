@@ -27,6 +27,7 @@ public class CollectionGUI{
 		inputHeader = new JLabel("Input:");
 		outputHeader = new JLabel("Output:");
 		tabs = new JTabbedPane();
+		mainframe.setDefaultCloseOperation(0);
 		createAtbashDisplay();
 		tabs.add("Atbash", atbashPanel);
 		mainframe.add(tabs);
