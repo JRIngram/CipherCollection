@@ -12,7 +12,11 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JOptionPane;
 
-
+/** User interface for the cipher collection.
+ * 
+ *  @author JRIngram
+ *
+ */
 
 public class CollectionGUI{
 	//Relevant to all sections.
@@ -22,8 +26,15 @@ public class CollectionGUI{
 	private JLabel outputHeader;
 	private JPanel atbashPanel;
 	
+	/** Constructs GUI with tabs for each of the developed ciphers.
+	 * <p>Currently these Ciphers include:</p>
+	 * <ul>
+	 * 	<li>Atbash</li>
+	 * </ul>
+	 */
+	
 	public CollectionGUI(){
-		mainframe = new JFrame("Cipher Collection");
+		mainframe = new JFrame("Cipher Collection\t0.1.1");
 		inputHeader = new JLabel("Input:");
 		outputHeader = new JLabel("Output:");
 		tabs = new JTabbedPane();
@@ -59,7 +70,9 @@ public class CollectionGUI{
 		});
 	}
 	
-	//Creates the tab for the Atbash display
+	/** Creates the tab for the Atbash display.
+	 * <p>Additionally creates action listeners for the encrypt and decrypt button.
+	 */
 	private void createAtbashDisplay(){
 		Atbash atbash = new Atbash();
 		atbashPanel = new JPanel(new BorderLayout());

@@ -1,10 +1,18 @@
 package ingram.jr.cipherCollection.ciphers;
 
+/**Abstract superclass for ciphers.
+ * 
+ * @author JRIngram
+ *
+ */
 public abstract class Cipher {
 	protected final String[] alphabet;
 	protected String[] wordCharacters; 
 	protected String encryptedWord;
 	
+	/**Fills the alphabet array with the relevant capital letters.
+	 * 
+	 */
 	public Cipher(){
 		alphabet = new String[26];
 		alphabet[0]  = "A";
@@ -35,27 +43,41 @@ public abstract class Cipher {
 		alphabet[25]  = "Z";
 	}
 	
+	/**Abstract method to encrypt the desired string.
+	 * 
+	 * @param word The word to be encrypted
+	 */
 	public abstract void encrypt(String word);
+	
+	/**Abstract method to decrypt the desired string.
+	 * 
+	 * @param encryptedWord The word to be encrypted
+	 */
 	
 	public abstract void decrypt(String encryptedWord);
 	
-	//Splits the words into individual characters.
+	/**Splits the words into individual characters.
+	 * 
+	 * @param word The word are encrypting.
+	 */
 	public void setWordCharacters(String word){
 			wordCharacters = word.split("");		
 	}
 	
-	//Returns a specified letter from the alphabet
+	/**Returns a specified letter from the alphabet
+	 * @param index The index of the letter we wish to retrieve. 
+	 * @return The letter of the alphabet.
+	 */
 	public String getAlphabetLetter(int index){
 		return alphabet[index];
 	}
 	
-	//Returns encrypted word.
+	/**Returns encrypted word.
+	 * 
+	 * @return The word we've previously encrypted.
+	 */
 	public String getEncryptedWord(){
 		return encryptedWord; 
 	}
 	
-	//Sets the encrypted word.
-	public void setEncryptedWord(String encryptedWord){
-		this.encryptedWord = encryptedWord;
-	}
 }
