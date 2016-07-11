@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.1.3] 2016-07-11
+### Added 
+ * Caesar Cipher Class with both encryption
+### Changed
+ * Changed name of decrypt function parameter.
+
 ## [0.1.2] 2016-07-06
 ### Added
  * Version number at top of GUI.
