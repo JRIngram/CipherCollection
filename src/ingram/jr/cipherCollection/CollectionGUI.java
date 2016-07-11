@@ -1,5 +1,6 @@
 package ingram.jr.cipherCollection;
 import ingram.jr.cipherCollection.ciphers.Atbash;
+import ingram.jr.cipherCollection.ciphers.Caesar;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -25,7 +26,7 @@ public class CollectionGUI{
 	private JLabel inputHeader;
 	private JLabel outputHeader;
 	private JPanel atbashPanel;
-	
+	private JPanel caesarPanel;
 	/** Constructs GUI with tabs for each of the developed ciphers.
 	 * <p>Currently these Ciphers include:</p>
 	 * <ul>
@@ -34,13 +35,14 @@ public class CollectionGUI{
 	 */
 	
 	public CollectionGUI(){
-		mainframe = new JFrame("Cipher Collection\t0.1.1");
+		mainframe = new JFrame("Cipher Collection\t0.1.3");
 		inputHeader = new JLabel("Input:");
 		outputHeader = new JLabel("Output:");
 		tabs = new JTabbedPane();
 		mainframe.setDefaultCloseOperation(0);
 		createAtbashDisplay();
 		tabs.add("Atbash", atbashPanel);
+		tabs.add("Caesar", caesarPanel);
 		mainframe.add(tabs);
 		mainframe.pack();
 		mainframe.setVisible(true);
@@ -119,6 +121,10 @@ public class CollectionGUI{
 			}
 		});
 		atbashPanel.add(buttonPanel, BorderLayout.SOUTH);
+	}
+	
+	private void createCaesarTab(){
+		
 	}
 
 	

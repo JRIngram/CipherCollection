@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.1.3] 2016-07-11
+### Added
+ * Caesar Class with encryption functionality.
+
 ## [0.1.2] 2016-07-06
 ### Added
  * Version number at top of GUI.
