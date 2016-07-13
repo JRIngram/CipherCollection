@@ -37,16 +37,8 @@ public class Caesar extends Cipher {
 
 	@Override
 	public void decrypt(String wordToBeDecrypted){
-		StringBuilder sb = new StringBuilder("");
-		try{
-
-		}
-		catch(ArrayIndexOutOfBoundsException e){
-			sb.append("Key must be a positive number!");
-		}
-		finally{
-			encryptedWord = sb.toString();		
-		}		
+		setKey(26-key);
+		encrypt(wordToBeDecrypted);
 	}
 	
 	public void setKey(int key){
