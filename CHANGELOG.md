@@ -1,14 +1,14 @@
 # Change Log
 
 ## [Unreleased]
-
-## [0.1.4] 2016-07-13
 ### Added
- * Caesar decryption functionality.
+ * Caesar Class with encryption and decryption functionality.
+ * Abstract Class Tab and AtbashTab Class
+ * GUI Package.
 
-## [0.1.3] 2016-07-11
-### Added
- * Caesar Class with encryption functionality.
+### Changed
+ * Collection GUI now only creates "Tab" classes and displays them - the functionality of these tabs are created in the "Tab" classes themselves. E.g. Atbash GUI functionality is created in AtbashTab.
+
 
 ## [0.1.2] 2016-07-06
 ### Added

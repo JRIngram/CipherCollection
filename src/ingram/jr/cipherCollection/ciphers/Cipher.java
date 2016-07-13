@@ -51,10 +51,10 @@ public abstract class Cipher {
 	
 	/**Abstract method to decrypt the desired string.
 	 * 
-	 * @param encryptedWord The word to be encrypted
+	 * @param wordToBeDecrypted The word to be encrypted
 	 */
 	
-	public abstract void decrypt(String encryptedWord);
+	public abstract void decrypt(String wordToBeDecrypted);
 	
 	/**Splits the words into individual characters.
 	 * 
