@@ -1,5 +1,11 @@
 # Change Log
 
+## [Unreleased]
+
+## [0.1.4] 2016-07-13
+### Added
+ * Caesar decryption functionality.
+
 ## [0.1.3] 2016-07-11
 ### Added
  * Caesar Class with encryption functionality.

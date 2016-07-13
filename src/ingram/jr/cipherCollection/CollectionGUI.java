@@ -35,7 +35,7 @@ public class CollectionGUI{
 	 */
 	
 	public CollectionGUI(){
-		mainframe = new JFrame("Cipher Collection\t0.1.3");
+		mainframe = new JFrame("Cipher Collection\t0.1.4");
 		inputHeader = new JLabel("Input:");
 		outputHeader = new JLabel("Output:");
 		tabs = new JTabbedPane();
