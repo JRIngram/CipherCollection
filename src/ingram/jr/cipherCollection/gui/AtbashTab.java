@@ -1,7 +1,6 @@
 package ingram.jr.cipherCollection.gui;
 
 import java.awt.BorderLayout;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
@@ -30,7 +29,6 @@ public class AtbashTab extends Tab {
 	public AtbashTab(){
 		super();
 		atbash = new Atbash();
-		cipherPanel = new JPanel(new BorderLayout());
 		atbashIO = new JPanel(new BorderLayout());
 		atbashInput = new JPanel(new BorderLayout());
 		atbashOutput = new JPanel(new BorderLayout());

@@ -44,5 +44,9 @@ public class Caesar extends Cipher {
 	public void setKey(int key){
 		this.key = key;
 	}
+	
+	public int getKey(){
+		return key;
+	}
 
 }

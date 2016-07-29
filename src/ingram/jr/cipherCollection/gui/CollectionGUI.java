@@ -23,7 +23,7 @@ public class CollectionGUI{
 	 * </ul>
 	 */
 	public CollectionGUI(){
-		mainframe = new JFrame("Cipher Collection\t0.1.1");
+		mainframe = new JFrame("Cipher Collection\tV0.2.0");
 		tabs = new JTabbedPane();
 		mainframe.setDefaultCloseOperation(0);
 		atbashTab = new AtbashTab();

@@ -3,6 +3,8 @@ package ingram.jr.cipherCollection.gui;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,10 +29,10 @@ public class Tab {
 		encryptButton = new JButton("Encrypt");
 		decryptButton = new JButton("Decrypt");
 		quitButton = new JButton("Quit");
+		cipherPanel = new JPanel(new BorderLayout());
 		buttonPanel = new JPanel(new FlowLayout());
 	}
 	
-	//protected void createEncryptDecryptButtons();
 	
 	/** Adds the  JButtons to the buttonPanel.
 	 * 	Adds tool tips to both buttons and adds the ActionListener to the quit button. 
