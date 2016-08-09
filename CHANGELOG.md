@@ -3,6 +3,8 @@
 ## [0.3.0] Unreleased.
 ### Added
  * Vigenere class with encryption and decryption functionality.
+### Changed
+ * 'gui' is now a private variable within the main loop.
 
 ## [0.2.0] 2016-07-29
 ### Added
