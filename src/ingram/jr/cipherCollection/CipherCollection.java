@@ -1,7 +1,6 @@
 package ingram.jr.cipherCollection;
 
 import ingram.jr.cipherCollection.gui.CollectionGUI;
-
 /** Main loop - creates GUI for the system.
  * 
  * @author JRIngram
@@ -9,8 +8,10 @@ import ingram.jr.cipherCollection.gui.CollectionGUI;
  */
 
 public class CipherCollection {
+	
+	private static CollectionGUI gui;
 	public static void main(String[] args) {
-		CollectionGUI gui = new CollectionGUI();
+		gui = new CollectionGUI();
 	}
 
 }

@@ -1,5 +1,11 @@
 package ingram.jr.cipherCollection.ciphers;
 
+/**
+ * 
+ * @author JRIngram
+ * @version 0.2.0
+ *
+ */
 public class Caesar extends Cipher {
 	private int key;
 	

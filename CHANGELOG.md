@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.3.0] Unreleased.
+### Added
+ * Vigenere class with encryption and decryption functionality.
+
 ## [0.2.0] 2016-07-29
 ### Added
  * Caesar Class with encryption and decryption functionality.

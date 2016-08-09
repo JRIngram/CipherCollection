@@ -13,8 +13,8 @@ public class Vigenere extends Cipher{
 		}
 	}
 
-	//Ci = Ti + Ki mod 26
 	@Override
+	//Spaces count as shifts!
 	public void encrypt(String word) {
 		StringBuilder sb = new StringBuilder("");
 		setWordCharacters(word.toUpperCase());
@@ -31,13 +31,25 @@ public class Vigenere extends Cipher{
 			}
 		}
 		encryptedWord = sb.toString();
-		System.out.println(encryptedWord);
 	}
 
 	@Override
 	public void decrypt(String wordToBeDecrypted) {
-		// TODO Auto-generated method stub
-
+		StringBuilder sb = new StringBuilder("");
+		setWordCharacters(wordToBeDecrypted.toUpperCase());
+		for(int i = 0; i < wordCharacters.length; i++){
+			if(wordCharacters[i].matches("[a-zA-z]")){
+				Integer val = (characterValues.get(wordCharacters[i]) + (26 - (characterValues.get(keyCharacters[i % keyCharacters.length])))) % 26;
+				for(HashMap.Entry<String, Integer> letterValuePair : characterValues.entrySet()){
+					if(val.equals(letterValuePair.getValue())){
+						sb.append(letterValuePair.getKey());
+					}
+				}
+			}else{
+				sb.append(wordCharacters[i]);
+			}
+		}
+		encryptedWord = sb.toString();
 	}
 
 	public void setKeyCharacters(String key){

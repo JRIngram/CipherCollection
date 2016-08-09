@@ -3,6 +3,7 @@ package ingram.jr.cipherCollection.ciphers;
 /**Atbash cipher which encrypted by reversing the alphabet, such that A = Z, B = Y, C = X ect.
  * 
  * @author JRIngram
+ * @version 0.1.0
  *
  */
 public class Atbash extends Cipher {
