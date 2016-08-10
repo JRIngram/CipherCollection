@@ -10,6 +10,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+/**Creates the GUI tab for the Vigenere cipher.
+ * @version 1.0.0
+ * @since 0.3.0
+ * @see Tab
+ * @see CollectionGUI
+ * @see Vigenere
+ * */
 public class VigenereTab extends Tab{
 	private Vigenere vigenere;
 	private JPanel vigenereIO;
@@ -22,7 +29,9 @@ public class VigenereTab extends Tab{
 	private JTextArea vigenereKeyBox;
 	private JTextArea vigenereOutputBox;
 	
-	
+	/**Constructs Vigenere Tab
+	 * 
+	 */
 	public VigenereTab(){
 		super();
 		vigenere = new Vigenere();
@@ -68,8 +77,7 @@ public class VigenereTab extends Tab{
 		createCoreButtons();
 		cipherPanel.add(buttonPanel, BorderLayout.SOUTH);
 		
-		/*When Encrypt button is pressed:
-		 * The key characters are set and then the world is encrypted.
+		/**When encrypt button is pressed: The key characters are set and then the plaintext is encrypted.
 		 */
 		encryptButton.addActionListener(new ActionListener(){
 			@Override
@@ -80,6 +88,8 @@ public class VigenereTab extends Tab{
 			}
 		});
 		
+		/**When decrypt button is pressed: The key characters are set and then the ciphertext is decrypted.
+		 */
 		decryptButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {

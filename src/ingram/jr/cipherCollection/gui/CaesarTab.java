@@ -14,6 +14,7 @@ import ingram.jr.cipherCollection.ciphers.Caesar;
 /**Creates the GUI tab for the Caesar cipher.
  * @version 1.0.0
  * @since 0.2.0
+ * @see Caesar
  * @see Tab
  * @see CollectionGUI
  * */

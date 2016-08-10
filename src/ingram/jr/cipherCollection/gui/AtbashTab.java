@@ -11,6 +11,8 @@ import ingram.jr.cipherCollection.ciphers.Atbash;
 /** Constructs Atbash tabs for CipherCollectionGUI of the developed ciphers.
  * @author JRIngram
  * @see CollectionGUI
+ * @see Tab
+ * @see Atbash
  */
 
 public class AtbashTab extends Tab {
