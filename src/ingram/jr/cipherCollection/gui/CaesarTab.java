@@ -11,6 +11,12 @@ import javax.swing.event.ChangeListener;
 import javax.swing.JSlider;
 import ingram.jr.cipherCollection.ciphers.Caesar;
 
+/**Creates the GUI tab for the Caesar cipher.
+ * @version 1.0.0
+ * @since 0.2.0
+ * @see Tab
+ * @see CollectionGUI
+ * */
 public class CaesarTab extends Tab{
 	private Caesar caesar;
 	private JPanel caesarIO;
@@ -22,7 +28,10 @@ public class CaesarTab extends Tab{
 	private JTextArea caesarInputBox;
 	private JSlider keySlider;
 	private JTextArea caesarOutputBox;
-
+	
+	/**Constructs Caesar Tab.
+	 * 
+	 */
 	public CaesarTab(){
 		super();
 		caesar = new Caesar();
@@ -68,7 +77,8 @@ public class CaesarTab extends Tab{
 		createCoreButtons();
 		cipherPanel.add(buttonPanel, BorderLayout.SOUTH);
 		
-		//When the slider changes position the Key Value label is updated to show the new value.
+		/**When the slider changes position the Key Value label is updated to show the new value.
+		 */
 		keySlider.addChangeListener(new ChangeListener(){
 			@Override
 			public void stateChanged(ChangeEvent e) {
@@ -77,8 +87,7 @@ public class CaesarTab extends Tab{
 			}
 		});
 		
-		/*When the encrypt button is pressed: 
-		 * The input box value is encrypted and displayed in the output box.
+		/**When the encrypt button is pressed, the input box value is encrypted and displayed in the output box.
 		 */
 		encryptButton.addActionListener(new ActionListener(){
 			@Override
@@ -89,8 +98,7 @@ public class CaesarTab extends Tab{
 			
 		});
 		
-		/*When the decrypt button is pressed: 
-		 * The input box value is decrypted and displayed in the output box.
+		/**When the decrypt button is pressed, the input box value is decrypted and displayed in the output box.
 		 */
 		decryptButton.addActionListener(new ActionListener(){
 			@Override

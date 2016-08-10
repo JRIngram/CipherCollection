@@ -3,7 +3,9 @@ package ingram.jr.cipherCollection.ciphers;
 /**Atbash cipher which encrypted by reversing the alphabet, such that A = Z, B = Y, C = X ect.
  * 
  * @author JRIngram
- * @version 0.1.0
+ * @version 1.0.0
+ * @since 0.1.0
+ * @see Cipher
  *
  */
 public class Atbash extends Cipher {
@@ -23,8 +25,8 @@ public class Atbash extends Cipher {
 		}
 	}
 	
-	/**Encrypts the word by reversing the letters.
-	 * @param word The word that is going to be encrypted.
+	/**Encrypts the plaintext by reversing the letters.
+	 * @param word The plaintext that is going to be encrypted.
 	 */
 	@Override
 	public void encrypt(String word){
@@ -46,10 +48,10 @@ public class Atbash extends Cipher {
 		encryptedWord = sb.toString();
 	}
 	
-	/**Decrypts the currently encrypted word.
+	/**Decrypts the ciphertext.
 	 * Due to Atbash's relative ease, it is simply decrypted in the same way the words are encrypted.
 	 * 
-	 * @param encryptedWord The word that is being decrypted.
+	 * @param encryptedWord The ciphertext that is being decrypted.
 	 */
 	
 	@Override
