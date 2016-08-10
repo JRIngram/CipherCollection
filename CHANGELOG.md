@@ -3,8 +3,12 @@
 ## [0.3.0] Unreleased.
 ### Added
  * Vigenere Class with encryption and decryption functionality.
+
 ### Changed
  * 'gui' is now a private variable within the main loop.
+
+### Fixed
+ * Bug where on decryption, the Atbash tab would swap the output of the previous encryption and place it in the input and then decrypt this word rather than decrypting the users actual input.
 
 ## [0.2.0] 2016-07-29
 ### Added

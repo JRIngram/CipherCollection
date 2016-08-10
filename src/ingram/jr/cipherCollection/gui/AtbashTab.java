@@ -64,8 +64,7 @@ public class AtbashTab extends Tab {
 		
 		decryptButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				atbashInputBox.setText(atbash.getEncryptedWord());
-				atbash.encrypt(atbash.getEncryptedWord());
+				atbash.encrypt(atbashInputBox.getText());
 				atbashOutputBox.setText(atbash.getEncryptedWord());
 			}
 		});
