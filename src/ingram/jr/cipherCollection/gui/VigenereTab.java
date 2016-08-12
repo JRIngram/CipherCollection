@@ -39,7 +39,7 @@ public class VigenereTab extends Tab{
 		vigenereInput = new JPanel(new BorderLayout());
 		vigenereKeyInput = new JPanel(new BorderLayout());
 		vigenereOutput = new JPanel(new BorderLayout());
-		vigenereExplantion = new JLabel("<html><p>Each letter in they key has a value associated with it(A: 0, B: 1, C: 2)</p>"
+		vigenereExplantion = new JLabel("<html><p>Each letter in the key has a value associated with it(A: 0, B: 1, C: 2)</p>"
 				+ "<p>The key cycles through the key one letter at a time.</p>"
 				+ "<p>It shifts a letter in the word by a value dependent on the key.</p>"
 				+ "<p>The key wraps.</p>"

@@ -13,6 +13,12 @@ import javax.swing.JFrame;
 
 import javax.swing.JButton;
 
+/** Superclass for GUI Tabs.
+ * 
+ * @version 1.0.0
+ * @author JRIngram
+ *
+ */
 public class Tab {
 	private JButton quitButton;
 	protected JPanel cipherPanel;

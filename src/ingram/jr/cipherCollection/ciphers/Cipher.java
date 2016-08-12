@@ -3,7 +3,7 @@ package ingram.jr.cipherCollection.ciphers;
 /**Abstract superclass for ciphers.
  * 
  * @author JRIngram
- *
+ * @version 1.0.0
  */
 public abstract class Cipher {
 	protected final String[] alphabet;
