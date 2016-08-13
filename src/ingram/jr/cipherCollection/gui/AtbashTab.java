@@ -17,57 +17,41 @@ import ingram.jr.cipherCollection.ciphers.Atbash;
 
 public class AtbashTab extends Tab {
 	private Atbash atbash;
-	private JPanel atbashIO;
-	private JPanel atbashInput;
-	private JPanel atbashOutput;
-	private JLabel atbashExplanation;
-	private JTextArea atbashInputBox;
-	private JTextArea atbashOutputBox;
 	
 	/** Creates the tab for the Atbash display.
 	 * <p>Additionally creates action listeners for the encrypt and decrypt button.
 	 */
-	
 	public AtbashTab(){
 		super();
 		atbash = new Atbash();
-		atbashIO = new JPanel(new BorderLayout());
-		atbashInput = new JPanel(new BorderLayout());
-		atbashOutput = new JPanel(new BorderLayout());
-		atbashExplanation = new JLabel("Substitutes 'A' for 'Z', 'B' for 'Y', 'C' for 'X' ect.");
-		atbashInputBox = new JTextArea("Input");
-		atbash.encrypt(atbashInputBox.getText());
-		atbashOutputBox = new JTextArea(atbash.getEncryptedWord());
-		atbashOutputBox.setEditable(false);
-		atbashInputBox.setRows(3);
-		atbashOutputBox.setRows(3);
+		cipherIO = new JPanel(new BorderLayout());
+		inputPanel = new JPanel(new BorderLayout());
+		outputPanel = new JPanel(new BorderLayout());
+		cipherExplanation = new JLabel("Substitutes 'A' for 'Z', 'B' for 'Y', 'C' for 'X' ect.");
+		atbash.encrypt(cipherInputBox.getText());
+		cipherOutputBox = new JTextArea(atbash.getEncryptedWord());
 		
-		cipherPanel.add(atbashExplanation, BorderLayout.NORTH);
+		cipherPanel.add(cipherExplanation, BorderLayout.NORTH);
 		
-		atbashIO.add(atbashInput, BorderLayout.NORTH);
-		atbashInput.add(inputHeader, BorderLayout.NORTH);
-		atbashInput.add(atbashInputBox, BorderLayout.CENTER);
-		
-		atbashIO.add(atbashOutput, BorderLayout.CENTER);
-		atbashOutput.add(outputHeader, BorderLayout.NORTH);
-		atbashOutput.add(atbashOutputBox, BorderLayout.CENTER);
+		addInputOutputBoxes();
+		cipherIO.add(inputPanel, BorderLayout.NORTH);	
+		cipherIO.add(outputPanel, BorderLayout.CENTER);
 				
-		cipherPanel.add(atbashIO, BorderLayout.CENTER);
+		cipherPanel.add(cipherIO, BorderLayout.CENTER);
 		
 		createCoreButtons();
-		cipherPanel.add(buttonPanel, BorderLayout.SOUTH);
 		
 		encryptButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				atbash.encrypt(atbashInputBox.getText());
-				atbashOutputBox.setText(atbash.getEncryptedWord());
+				atbash.encrypt(cipherInputBox.getText());
+				cipherOutputBox.setText(atbash.getEncryptedWord());
 			}
 		});
 		
 		decryptButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				atbash.encrypt(atbashInputBox.getText());
-				atbashOutputBox.setText(atbash.getEncryptedWord());
+				atbash.encrypt(cipherInputBox.getText());
+				cipherOutputBox.setText(atbash.getEncryptedWord());
 			}
 		});
 	}

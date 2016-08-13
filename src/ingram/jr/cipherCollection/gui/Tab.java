@@ -31,7 +31,7 @@ public class Tab {
 	protected JLabel inputHeader;
 	protected JLabel outputHeader;
 	protected JTextArea cipherInputBox;
-	protected JTextArea outputBox;
+	protected JTextArea cipherOutputBox;
 	
 	public Tab(){
 		outputHeader = new JLabel("Output:");
@@ -55,10 +55,10 @@ public class Tab {
 		
 		//Setting up output panel
 		outputPanel = new JPanel(new BorderLayout());
-		outputBox = new JTextArea();
-		outputBox.setLineWrap(true);
-		outputBox.setRows(3);
-		outputBox.setEditable(false);
+		cipherOutputBox = new JTextArea();
+		cipherOutputBox.setLineWrap(true);
+		cipherOutputBox.setRows(3);
+		cipherOutputBox.setEditable(false);
 	}
 	
 	
@@ -76,12 +76,17 @@ public class Tab {
 		buttonPanel.add(quitButton);
 		quitButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				int quit = JOptionPane.showConfirmDialog(null,"Are you sure you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-				if(quit == 0){
+				try{
+					int quit = JOptionPane.showConfirmDialog(null,"Are you sure you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+					if(quit == 0){
+						System.exit(0);
+					}
+				}catch(Exception exc){
 					System.exit(0);
 				}
 			}
 		});
+		cipherPanel.add(buttonPanel, BorderLayout.SOUTH);
 	}
 	
 	/**Adds the input/output headers and textboxes to their respective panels.
@@ -91,7 +96,7 @@ public class Tab {
 		inputPanel.add(inputHeader, BorderLayout.NORTH);
 		inputPanel.add(cipherInputBox, BorderLayout.CENTER);
 		outputPanel.add(outputHeader, BorderLayout.NORTH);
-		outputPanel.add(outputBox, BorderLayout.CENTER);
+		outputPanel.add(cipherOutputBox, BorderLayout.CENTER);
 	}
 	
 	/** Returns the cipherPanel, which has been created during the construction of the subclass.
