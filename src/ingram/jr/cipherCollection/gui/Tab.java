@@ -3,13 +3,12 @@ package ingram.jr.cipherCollection.gui;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
 
 import javax.swing.JButton;
 
@@ -20,23 +19,46 @@ import javax.swing.JButton;
  *
  */
 public class Tab {
-	private JButton quitButton;
 	protected JPanel cipherPanel;
 	protected JPanel buttonPanel;
+	protected JPanel inputPanel;
+	protected JPanel outputPanel;
+	protected JPanel cipherIO;
 	protected JButton encryptButton;
 	protected JButton decryptButton;
+	private JButton quitButton;
+	protected JLabel cipherExplanation;
 	protected JLabel inputHeader;
 	protected JLabel outputHeader;
-	
+	protected JTextArea cipherInputBox;
+	protected JTextArea outputBox;
 	
 	public Tab(){
-		inputHeader = new JLabel("Input:");
 		outputHeader = new JLabel("Output:");
-		encryptButton = new JButton("Encrypt");
-		decryptButton = new JButton("Decrypt");
-		quitButton = new JButton("Quit");
 		cipherPanel = new JPanel(new BorderLayout());
+		
+		//Setting up superclass input panel
+		inputPanel = new JPanel(new BorderLayout());	
+		inputHeader = new JLabel("Input:");
+		cipherInputBox = new JTextArea("Input");
+		cipherInputBox.setLineWrap(true);
+		cipherInputBox.setRows(3);
+		
+		//Setting up button panel
 		buttonPanel = new JPanel(new FlowLayout());
+		encryptButton = new JButton("Encrypt");
+		encryptButton.setToolTipText("Encrypts the current input text.");
+		decryptButton = new JButton("Decrypt");
+		decryptButton.setToolTipText("Decrypts the current output text.");
+		quitButton = new JButton("Quit");
+		quitButton.setToolTipText("Quits the program.");
+		
+		//Setting up output panel
+		outputPanel = new JPanel(new BorderLayout());
+		outputBox = new JTextArea();
+		outputBox.setLineWrap(true);
+		outputBox.setRows(3);
+		outputBox.setEditable(false);
 	}
 	
 	
@@ -50,11 +72,8 @@ public class Tab {
 	
 	protected void createCoreButtons(){
 		buttonPanel.add(encryptButton);
-		encryptButton.setToolTipText("Encrypts the current input text.");
 		buttonPanel.add(decryptButton);
-		decryptButton.setToolTipText("Decrypts the current output text.");
 		buttonPanel.add(quitButton);
-		quitButton.setToolTipText("Quits the program.");
 		quitButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				int quit = JOptionPane.showConfirmDialog(null,"Are you sure you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -64,6 +83,21 @@ public class Tab {
 			}
 		});
 	}
+	
+	/**Adds the input/output headers and textboxes to their respective panels.
+	 * 
+	 */
+	protected void addInputOutputBoxes(){
+		inputPanel.add(inputHeader, BorderLayout.NORTH);
+		inputPanel.add(cipherInputBox, BorderLayout.CENTER);
+		outputPanel.add(outputHeader, BorderLayout.NORTH);
+		outputPanel.add(outputBox, BorderLayout.CENTER);
+	}
+	
+	/** Returns the cipherPanel, which has been created during the construction of the subclass.
+	 * 
+	 * @return The cipher tab that has been created.
+	 */
 	
 	public JPanel getTab(){
 		return cipherPanel;
