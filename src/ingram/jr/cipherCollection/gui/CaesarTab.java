@@ -20,15 +20,9 @@ import ingram.jr.cipherCollection.ciphers.Caesar;
  * */
 public class CaesarTab extends Tab{
 	private Caesar caesar;
-	private JPanel caesarIO;
-	private JLabel caesarExplanation;
-	private JPanel caesarInput;
-	private JPanel caesarOutput;
 	private JPanel keyPanel;
 	private JLabel keyValueLabel;
-	private JTextArea caesarInputBox;
 	private JSlider keySlider;
-	private JTextArea caesarOutputBox;
 	
 	/**Constructs Caesar Tab.
 	 * 
@@ -36,47 +30,35 @@ public class CaesarTab extends Tab{
 	public CaesarTab(){
 		super();
 		caesar = new Caesar();
-		caesar.setKey(13);
-		caesarIO = new JPanel(new BorderLayout());
+		cipherIO = new JPanel(new BorderLayout());
 		keyPanel = new JPanel(new BorderLayout());
-		caesarInput = new JPanel(new BorderLayout());
-		caesarOutput = new JPanel(new BorderLayout());
-		caesarExplanation = new JLabel("<html>Shifts all lets in the input string by the key amount.<br>e.g. If the key is 1 A = B, B = C... Z = A.</html>");
-		keyValueLabel = new JLabel("Key Value: " + caesar.getKey());
-		keySlider = new JSlider(0,25,13);
-		caesar.setKey(keySlider.getValue());
-		caesarInputBox = new JTextArea("Input");
-		caesar.encrypt(caesarInputBox.getText());
-		caesarOutputBox = new JTextArea(caesar.getEncryptedWord());
+		inputPanel = new JPanel(new BorderLayout());
+		outputPanel = new JPanel(new BorderLayout());
+		cipherExplanation = new JLabel();
 		
-		//Set-up options for the input/output texboxes.
-		caesarOutputBox.setEditable(false);
-		caesarInputBox.setRows(3);
-		caesarOutputBox.setRows(3);
-		
-		//Set-up options for the key slider.
+		//Sets initial value of the key and sets-up key slider.
+		caesar.setKey(13);
+		keySlider = new JSlider(0,25,caesar.getKey());
+		keyValueLabel = new JLabel("Key Value: " + keySlider.getValue());
+		caesar.encrypt(cipherInputBox.getText());
 		keySlider.setMinorTickSpacing(1);
 		keySlider.setMajorTickSpacing(5);
 		keySlider.setPaintTicks(true);
 		keySlider.setPaintLabels(true);
-
-		cipherPanel.add(caesarExplanation, BorderLayout.NORTH);		
-
-		caesarIO.add(caesarInput, BorderLayout.NORTH);
-		caesarInput.add(inputHeader, BorderLayout.NORTH);
-		caesarInput.add(caesarInputBox, BorderLayout.CENTER);
+		cipherOutputBox.setText(caesar.getEncryptedWord());
+		
+		addCipherExplanation("<html>Shifts all lets in the input string by the key amount.<br>e.g. If the key is 1 A = B, B = C... Z = A.</html>");
+		
 		keyPanel.add(keyValueLabel, BorderLayout.NORTH);
 		keyPanel.add(keySlider,BorderLayout.CENTER);		
-		caesarInput.add(keyPanel, BorderLayout.SOUTH);
+		inputPanel.add(keyPanel, BorderLayout.SOUTH);
 		
-		caesarIO.add(caesarOutput, BorderLayout.CENTER);
-		caesarOutput.add(outputHeader, BorderLayout.NORTH);
-		caesarOutput.add(caesarOutputBox, BorderLayout.CENTER);
-		
-		cipherPanel.add(caesarIO, BorderLayout.CENTER);
-		
+		addInputOutputBoxes();
+		cipherIO.add(inputPanel, BorderLayout.NORTH);
+		cipherIO.add(outputPanel, BorderLayout.CENTER);
+		cipherPanel.add(cipherIO, BorderLayout.CENTER);
+
 		createCoreButtons();
-		cipherPanel.add(buttonPanel, BorderLayout.SOUTH);
 		
 		/**When the slider changes position the Key Value label is updated to show the new value.
 		 */
@@ -93,8 +75,8 @@ public class CaesarTab extends Tab{
 		encryptButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				caesar.encrypt(caesarInputBox.getText());
-				caesarOutputBox.setText(caesar.getEncryptedWord());
+				caesar.encrypt(cipherInputBox.getText());
+				cipherOutputBox.setText(caesar.getEncryptedWord());
 			}
 			
 		});
@@ -104,8 +86,8 @@ public class CaesarTab extends Tab{
 		decryptButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				caesar.decrypt(caesarInputBox.getText());
-				caesarOutputBox.setText(caesar.getEncryptedWord());
+				caesar.decrypt(cipherInputBox.getText());
+				cipherOutputBox.setText(caesar.getEncryptedWord());
 			}
 		});
 		

@@ -34,8 +34,8 @@ public class Tab {
 	protected JTextArea cipherOutputBox;
 	
 	protected Tab(){
-		outputHeader = new JLabel("Output:");
 		cipherPanel = new JPanel(new BorderLayout());
+		cipherExplanation = new JLabel();
 		
 		//Setting up superclass input panel
 		inputPanel = new JPanel(new BorderLayout());	
@@ -55,6 +55,7 @@ public class Tab {
 		
 		//Setting up output panel
 		outputPanel = new JPanel(new BorderLayout());
+		outputHeader = new JLabel("Output:");
 		cipherOutputBox = new JTextArea();
 		cipherOutputBox.setLineWrap(true);
 		cipherOutputBox.setRows(3);
@@ -106,5 +107,15 @@ public class Tab {
 	
 	public JPanel getTab(){
 		return cipherPanel;
+	}
+	
+	/** Sets the cipher explanation text and places it in the North of the cipherPanel.
+	 * 
+	 * @param cipherExplanation The JLabel object for explanation for the cipher.
+	 * @param explanation The explanation which the JLabel will display.
+	 */
+	protected void addCipherExplanation(String explanation){
+		cipherExplanation.setText(explanation);
+		cipherPanel.add(cipherExplanation, BorderLayout.NORTH);
 	}
 }
