@@ -33,7 +33,7 @@ public class Tab {
 	protected JTextArea cipherInputBox;
 	protected JTextArea cipherOutputBox;
 	
-	public Tab(){
+	protected Tab(){
 		outputHeader = new JLabel("Output:");
 		cipherPanel = new JPanel(new BorderLayout());
 		

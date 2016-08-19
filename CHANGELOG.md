@@ -6,6 +6,8 @@
 
 ### Changed
  * 'gui' is now a private variable within the main loop.
+ * Tab class is now protected so it cannot be instantiated.
+ * Refactoring to remove duplicated code within many of the individual cipher classes.
 
 ### Fixed
  * Bug where on decryption, the Atbash tab would swap the output of the previous encryption and place it in the input and then decrypt this word rather than decrypting the users actual input.
