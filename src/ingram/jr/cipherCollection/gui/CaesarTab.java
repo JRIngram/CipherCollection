@@ -44,7 +44,7 @@ public class CaesarTab extends Tab{
 		keySlider.setPaintLabels(true);
 		cipherOutputBox.setText(caesar.getEncryptedWord());
 		
-		addCipherExplanation("<html>Shifts all lets in the input string by the key amount.<br>e.g. If the key is 1 A = B, B = C... Z = A.</html>");
+		addCipherExplanation("<html>Shifts all letters in the input string by the key amount.<br>e.g. If the key is 1: A = B, B = C... Z = A.</html>");
 		
 		keyPanel.add(keyValueLabel, BorderLayout.NORTH);
 		keyPanel.add(keySlider,BorderLayout.CENTER);		

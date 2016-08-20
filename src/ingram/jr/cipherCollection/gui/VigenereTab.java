@@ -36,10 +36,9 @@ public class VigenereTab extends Tab{
 		vigenere.encrypt(cipherInputBox.getText());
 		cipherOutputBox.setText(vigenere.getEncryptedWord());
 		
-		addCipherExplanation("<html><p>Each letter in the key has a value associated with it(A: 0, B: 1, C: 2)</p>"
-				+ "<p>The key cycles through the key one letter at a time.</p>"
-				+ "<p>It shifts a letter in the word by a value dependent on the key.</p>"
-				+ "<p>The key wraps.</p>"
+		addCipherExplanation("<html><p>Each letter in the key has a value associated with it (A: 0, B: 1, C: 2)</p>"
+				+ "<p>The key continuously iterates over itself by one letter at a time.</p>"
+				+ "<p>It shifts a letter in the plaintext by a value dependent on the key.</p>"
 				+ "<p>e.g. 'abcd' encrypted by key 'ab' would shift to:'acce'</p></html>");
 		addInputOutputBoxes();
 		
