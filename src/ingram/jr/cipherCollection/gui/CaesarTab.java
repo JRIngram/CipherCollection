@@ -30,10 +30,7 @@ public class CaesarTab extends Tab{
 	public CaesarTab(){
 		super();
 		caesar = new Caesar();
-		cipherIO = new JPanel(new BorderLayout());
 		keyPanel = new JPanel(new BorderLayout());
-		inputPanel = new JPanel(new BorderLayout());
-		outputPanel = new JPanel(new BorderLayout());
 		cipherExplanation = new JLabel();
 		
 		//Sets initial value of the key and sets-up key slider.

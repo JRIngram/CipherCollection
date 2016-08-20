@@ -24,11 +24,8 @@ public class AtbashTab extends Tab {
 	public AtbashTab(){
 		super();
 		atbash = new Atbash();
-		cipherIO = new JPanel(new BorderLayout());
-		inputPanel = new JPanel(new BorderLayout());
-		outputPanel = new JPanel(new BorderLayout());
 		atbash.encrypt(cipherInputBox.getText());
-		cipherOutputBox = new JTextArea(atbash.getEncryptedWord());
+		cipherOutputBox.setText(atbash.getEncryptedWord());
 		
 		cipherPanel.add(cipherExplanation, BorderLayout.NORTH);
 		addCipherExplanation("Substitutes 'A' for 'Z', 'B' for 'Y', 'C' for 'X' ect.");

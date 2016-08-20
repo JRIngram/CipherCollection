@@ -35,6 +35,7 @@ public class Tab {
 	
 	protected Tab(){
 		cipherPanel = new JPanel(new BorderLayout());
+		cipherIO = new JPanel(new BorderLayout());
 		cipherExplanation = new JLabel();
 		
 		//Setting up superclass input panel
