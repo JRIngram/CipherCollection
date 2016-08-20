@@ -11,6 +11,7 @@
 
 ### Fixed
  * Bug where on decryption, the Atbash tab would swap the output of the previous encryption and place it in the input and then decrypt this word rather than decrypting the users actual input.
+ * Error in CaesarTab explanation.
 
 ## [0.2.0] 2016-07-29
 ### Added
