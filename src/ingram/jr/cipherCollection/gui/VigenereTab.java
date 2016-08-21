@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**Creates the GUI tab for the Vigenere cipher.
@@ -22,6 +23,7 @@ public class VigenereTab extends Tab{
 	private JPanel vigenereKeyInput;
 	private JLabel vigenereKeyPrompt;
 	private JTextArea vigenereKeyBox;
+	private JScrollPane keyScrollPane;
 	
 	/**Constructs Vigenere Tab
 	 * 
@@ -45,13 +47,17 @@ public class VigenereTab extends Tab{
 		//Set-up for the individual key inputs.
 		vigenereKeyBox.setRows(3);
 		vigenereKeyInput.add(vigenereKeyPrompt, BorderLayout.NORTH);
-		vigenereKeyInput.add(vigenereKeyBox, BorderLayout.SOUTH);
+		vigenereKeyBox.setLineWrap(true);
+		vigenereKeyBox.setWrapStyleWord(true);
+		keyScrollPane = new JScrollPane(vigenereKeyBox, 
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		vigenereKeyInput.add(keyScrollPane, BorderLayout.CENTER);
 		
-		//Add the seperate IOs to the cipherIO panel
+		//Add the separate IOs to the cipherIO panel
 		cipherIO.add(inputPanel, BorderLayout.NORTH);
 		cipherIO.add(vigenereKeyInput, BorderLayout.CENTER);
 		cipherIO.add(outputPanel, BorderLayout.SOUTH);
-		
 		cipherPanel.add(cipherIO, BorderLayout.CENTER);
 		
 		createCoreButtons();

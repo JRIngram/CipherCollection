@@ -3,6 +3,7 @@ package ingram.jr.cipherCollection.gui;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import java.awt.BorderLayout;
@@ -30,6 +31,8 @@ public class Tab {
 	private JLabel cipherExplanation;
 	private JLabel inputHeader;
 	private JLabel outputHeader;
+	protected JScrollPane inputScrollPane;
+	protected JScrollPane outputScrollPane;
 	protected JTextArea cipherInputBox;
 	protected JTextArea cipherOutputBox;
 	
@@ -43,7 +46,8 @@ public class Tab {
 		inputHeader = new JLabel("Input:");
 		cipherInputBox = new JTextArea("Input");
 		cipherInputBox.setLineWrap(true);
-		cipherInputBox.setRows(3);
+		cipherInputBox.setWrapStyleWord(true);
+		cipherInputBox.setRows(5);
 		
 		//Setting up button panel
 		buttonPanel = new JPanel(new FlowLayout());
@@ -59,7 +63,8 @@ public class Tab {
 		outputHeader = new JLabel("Output:");
 		cipherOutputBox = new JTextArea();
 		cipherOutputBox.setLineWrap(true);
-		cipherOutputBox.setRows(3);
+		cipherOutputBox.setWrapStyleWord(true);
+		cipherOutputBox.setRows(5);
 		cipherOutputBox.setEditable(false);
 	}
 	
@@ -96,9 +101,15 @@ public class Tab {
 	 */
 	protected void addInputOutputBoxes(){
 		inputPanel.add(inputHeader, BorderLayout.NORTH);
-		inputPanel.add(cipherInputBox, BorderLayout.CENTER);
+		inputScrollPane = new JScrollPane(cipherInputBox, 
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		inputPanel.add(inputScrollPane, BorderLayout.CENTER);
 		outputPanel.add(outputHeader, BorderLayout.NORTH);
-		outputPanel.add(cipherOutputBox, BorderLayout.CENTER);
+		outputScrollPane = new JScrollPane(cipherOutputBox,
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		outputPanel.add(outputScrollPane, BorderLayout.CENTER);
 	}
 	
 	/** Returns the cipherPanel, which has been created during the construction of the subclass.
