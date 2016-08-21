@@ -31,7 +31,6 @@ public class CaesarTab extends Tab{
 		super();
 		caesar = new Caesar();
 		keyPanel = new JPanel(new BorderLayout());
-		cipherExplanation = new JLabel();
 		
 		//Sets initial value of the key and sets-up key slider.
 		caesar.setKey(13);
@@ -45,7 +44,6 @@ public class CaesarTab extends Tab{
 		cipherOutputBox.setText(caesar.getEncryptedWord());
 		
 		addCipherExplanation("<html>Shifts all letters in the input string by the key amount.<br>e.g. If the key is 1: A = B, B = C... Z = A.</html>");
-		
 		keyPanel.add(keyValueLabel, BorderLayout.NORTH);
 		keyPanel.add(keySlider,BorderLayout.CENTER);		
 		inputPanel.add(keyPanel, BorderLayout.SOUTH);

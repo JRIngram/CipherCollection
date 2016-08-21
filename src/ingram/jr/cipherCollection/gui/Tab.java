@@ -20,16 +20,16 @@ import javax.swing.JButton;
  */
 public class Tab {
 	protected JPanel cipherPanel;
-	protected JPanel buttonPanel;
+	private JPanel buttonPanel;
 	protected JPanel inputPanel;
 	protected JPanel outputPanel;
 	protected JPanel cipherIO;
 	protected JButton encryptButton;
 	protected JButton decryptButton;
 	private JButton quitButton;
-	protected JLabel cipherExplanation;
-	protected JLabel inputHeader;
-	protected JLabel outputHeader;
+	private JLabel cipherExplanation;
+	private JLabel inputHeader;
+	private JLabel outputHeader;
 	protected JTextArea cipherInputBox;
 	protected JTextArea cipherOutputBox;
 	

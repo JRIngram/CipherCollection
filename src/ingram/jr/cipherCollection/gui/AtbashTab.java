@@ -27,9 +27,7 @@ public class AtbashTab extends Tab {
 		atbash.encrypt(cipherInputBox.getText());
 		cipherOutputBox.setText(atbash.getEncryptedWord());
 		
-		cipherPanel.add(cipherExplanation, BorderLayout.NORTH);
-		addCipherExplanation("Substitutes 'A' for 'Z', 'B' for 'Y', 'C' for 'X' ect.");
-		
+		addCipherExplanation("Substitutes 'A' for 'Z', 'B' for 'Y', 'C' for 'X' ect.");	
 		addInputOutputBoxes();
 		cipherIO.add(inputPanel, BorderLayout.NORTH);	
 		cipherIO.add(outputPanel, BorderLayout.CENTER);

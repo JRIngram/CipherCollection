@@ -8,10 +8,11 @@
  * 'gui' is now a private variable within the main loop.
  * Tab class is now protected so it cannot be instantiated.
  * Refactoring to remove duplicated code within many of the individual cipher classes.
+ * Public visibility of variables within in Tab class, more variables are now private.
 
 ### Fixed
  * Bug where on decryption, the Atbash tab would swap the output of the previous encryption and place it in the input and then decrypt this word rather than decrypting the users actual input.
- * Error in CaesarTab explanation.
+ * Error in CaesarTab and Vigenere explanation.
 
 ## [0.2.0] 2016-07-29
 ### Added
