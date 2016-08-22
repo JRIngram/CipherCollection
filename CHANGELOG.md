@@ -1,6 +1,6 @@
 # Change Log
 
-## [0.3.0] Unreleased.
+## [0.3.0] 2016-08-21
 ### Added
  * Vigenere Class with encryption and decryption functionality.
  * Minimum size of the software window.
