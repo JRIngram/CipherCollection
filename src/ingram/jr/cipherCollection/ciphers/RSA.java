@@ -31,29 +31,27 @@ public class RSA extends Cipher {
 	private int e;
 	
 	/**Private key: d
-	 * ed = 1 mod (p-1)(q-1)
+	 * de = 1 mod (p-1)(q-1)
 	 **/
 	private int d;
 	
 	public RSA(){
-		
+		super();
 	}
 	
 	@Override
 	public void encrypt(String word) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void decrypt(String wordToBeDecrypted) {
-		// TODO Auto-generated method stub
 		
 	}
 		
 	/**Sets the value of p.
 	 * @throws IllegalArgumentException if p is not prime.
-	 * @param p Value of q, must be above 1 and below 2147483647.
+	 * @param p Value of p, must be above 1 and below 2147483647.
 	 */
 	private void setP(int p){
 		if(eratothenes(p)){
@@ -85,15 +83,28 @@ public class RSA extends Cipher {
 		m = (p-1)*(q-1);
 	}
 	
-	/**
+	/**Sets the values of p, q, n and m
 	 * 
-	 * @param p
-	 * @param q
+	 * @param p Value of p, must be above 1 and below 2147483647.
+	 * @param q Value of q, must be above 1 and below 2147483647.
 	 */
 	public void setPQAndDerivatives(int p, int q){
 		setP(p);
 		setQ(q);
 		setNAndM();
+	}
+	
+	/**Sets the value of e, must be coprime with m.
+	 * 
+	 * @param e The value of e, must be above 1 and below m.
+	 */
+	public void setE(int e){
+		if(euclidean(e,m) == 1  && m > e && e > 1){
+			this.e = e;
+		}
+		else{
+			throw new IllegalArgumentException();
+		}
 	}
 	
 	
@@ -135,5 +146,46 @@ public class RSA extends Cipher {
 		}
 		return prevX;
 	}
+	
+	/**Calculates highest common factor.
+	 * 
+	 * @param a Higher number
+	 * @param b Lower number
+	 *
+	 */
+	private int euclidean(int a, int b){
+		if(a > 1 && b > 1){
+			if(b > a){
+				int temp = a;
+				a = b;
+				b = temp;	
+			}
+		}
+		while(a % b != 0){
+			int tmp = a;
+			a = b;
+			b = tmp % b;
+		}
+		return b;
+	}
+	
+	public static int fastModExp(int message, int mod, int exp){
+		try{
+			String exponent = Integer.toBinaryString(exp);
+			int l = 1;
+			for(int i = exponent.length() - 1; i >=0; i--){
+				if(exponent.charAt(i) == '1'){
+					l = (l * message) % mod;    			
+				}
+				message = (message * message) % mod;	
+			}
+			return l;
+		}
+		catch(Exception e){
+			System.out.println("ERROR IN fastModExp!");
+			return 0;
+		}
+	}
+
 }
 
