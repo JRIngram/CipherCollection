@@ -1,4 +1,6 @@
 package ingram.jr.cipherCollection.gui;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
@@ -25,6 +27,7 @@ public class CollectionGUI{
 	 */
 	public CollectionGUI(){
 		mainframe = new JFrame("Cipher Collection\tV0.3.0");
+		mainframe.setMinimumSize(new Dimension(500,380));
 		tabs = new JTabbedPane();
 		mainframe.setDefaultCloseOperation(0);
 		atbashTab = new AtbashTab();

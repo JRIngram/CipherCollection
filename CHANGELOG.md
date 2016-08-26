@@ -1,14 +1,21 @@
 # Change Log
 
-## [0.3.0] Unreleased.
+## [0.3.0] 2016-08-21
 ### Added
  * Vigenere Class with encryption and decryption functionality.
+ * Minimum size of the software window.
+ * Scroll and word wrapping functionality for the input/output boxes.
 
 ### Changed
  * 'gui' is now a private variable within the main loop.
+ * Tab class is now protected so it cannot be instantiated.
+ * Refactoring to remove duplicated code within many of the individual cipher classes.
+ * Public visibility of variables within in Tab class, more variables are now private.
+ * Input boxes and Output boxes are now larger.
 
 ### Fixed
  * Bug where on decryption, the Atbash tab would swap the output of the previous encryption and place it in the input and then decrypt this word rather than decrypting the users actual input.
+ * Error in CaesarTab explanation.
 
 ## [0.2.0] 2016-07-29
 ### Added
