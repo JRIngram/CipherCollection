@@ -98,6 +98,13 @@ public class RSA extends Cipher {
 		}
 	}
 	
+	public int getP(){
+		return p;
+	}
+	
+	public int getQ(){
+		return q;
+	}
 	/**Returns value of n.
 	 * 
 	 * @return n which is equal to p*q.
@@ -132,7 +139,7 @@ public class RSA extends Cipher {
 	}
 	
 	public void setD(){
-		d = extendedEuclidean(m,e);
+		d = extendedEuclidean(e, m);
 	}
 	
 	public int getD(){
@@ -155,14 +162,15 @@ public class RSA extends Cipher {
 	
 	/** Performs extended Euclidan algorithm on the parameters.
 	 * 
-	 * @param a
-	 * @param b
-	 * @return 
+	 * @param a Should be the value of e
+	 * @param b Should be the value of m
+	 * @return The value of d, such that d*e % m = 1
 	 */
 	public int extendedEuclidean(int a, int b) {
 		//hcf(k, pq) = 1
 		//n = qd + r
 		//b acts as the divisor (d).
+		int originalB = b;
 		int prevX = 1;
 		int x = 0;
 		int prevY = 0;
@@ -185,10 +193,13 @@ public class RSA extends Cipher {
 			b = tempA % b;
 			
 		}
-		System.out.println(a);
 		System.out.println(prevX);
 		System.out.println(prevY);
-		return 0;
+		if(prevX < 0){
+			prevX = originalB + prevX;
+			System.out.println("PREVX NOW: "+ prevX);
+		}
+		return prevX;
 	}
 	
 	/**Calculates highest common factor.
