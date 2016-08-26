@@ -89,9 +89,29 @@ public class RSA extends Cipher {
 	 * @param q Value of q, must be above 1 and below 2147483647.
 	 */
 	public void setPQAndDerivatives(int p, int q){
-		setP(p);
-		setQ(q);
-		setNAndM();
+		if((p * q) > Integer.MAX_VALUE){
+			throw new IllegalArgumentException();
+		}else{
+			setP(p);
+			setQ(q);
+			setNAndM();
+		}
+	}
+	
+	/**Returns value of n.
+	 * 
+	 * @return n which is equal to p*q.
+	 */
+	public int getN(){
+		return n;
+	}
+	
+	/**Returns the value of m.
+	 * 
+	 * @return m which is equal (p-1)(q-1)
+	 */
+	public int getM(){
+		return m;
 	}
 	
 	/**Sets the value of e, must be coprime with m.
@@ -105,6 +125,18 @@ public class RSA extends Cipher {
 		else{
 			throw new IllegalArgumentException();
 		}
+	}
+	
+	public int getE(){
+		return e;
+	}
+	
+	public void setD(){
+		d = extendedEuclidean(m,e);
+	}
+	
+	public int getD(){
+		return d;
 	}
 	
 	
@@ -127,7 +159,7 @@ public class RSA extends Cipher {
 	 * @param b
 	 * @return 
 	 */
-	public static int extendedAlgorithm(int a, int b) {
+	public int extendedEuclidean(int a, int b) {
 		//hcf(k, pq) = 1
 		//n = qd + r
 		//b acts as the divisor (d).
