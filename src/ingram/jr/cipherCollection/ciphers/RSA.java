@@ -163,20 +163,32 @@ public class RSA extends Cipher {
 		//hcf(k, pq) = 1
 		//n = qd + r
 		//b acts as the divisor (d).
-		int x = 0; 
-		int prevX = 1; 
-		while (b != 0){
-			int quotient = a / b; 
-			int remainder = a % b;
+		int prevX = 1;
+		int x = 0;
+		int prevY = 0;
+		int y = 1;
+		
+		while(b != 0){
+			int quotient = a/b;
 			
-			//Higher = lower and lower = remainder
+			int tempX = x;
+			x = prevX - (quotient * x);
+			prevX = tempX;
+			
+			int tempY = y;
+			y = prevY - (quotient * y);
+			prevY = tempY;
+			
+			int tempA;
+			tempA = a;
 			a = b;
-			b = remainder; 
-			int temp = x;
-			x = prevX - quotient * x; //x = previous x - ((a/b) * x).  Generates new x.
-			prevX = temp;
+			b = tempA % b;
+			
 		}
-		return prevX;
+		System.out.println(a);
+		System.out.println(prevX);
+		System.out.println(prevY);
+		return 0;
 	}
 	
 	/**Calculates highest common factor.
