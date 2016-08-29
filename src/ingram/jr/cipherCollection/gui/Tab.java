@@ -16,6 +16,7 @@ import javax.swing.JButton;
 /** Superclass for GUI Tabs.
  * 
  * @version 1.0.0
+ * @since 0.2.0
  * @author JRIngram
  *
  */

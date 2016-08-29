@@ -4,14 +4,14 @@ import ingram.jr.cipherCollection.gui.CollectionGUI;
 /** Main loop - creates GUI for the system.
  * 
  * @author JRIngram
- *
+ * @version 1.0.0
+ * @since 0.1.0
  */
 
 public class CipherCollection {
 	
-	private static CollectionGUI gui;
 	public static void main(String[] args) {
-		gui = new CollectionGUI();
+		CollectionGUI gui = new CollectionGUI();
 	}
 
 }

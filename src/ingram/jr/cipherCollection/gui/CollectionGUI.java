@@ -8,7 +8,8 @@ import javax.swing.JTabbedPane;
 /** User interface for the cipher collection.
  * 
  *  @author JRIngram
- *
+ *	@version 1.0.0
+ *	@since 0.1.0
  */
 
 public class CollectionGUI{

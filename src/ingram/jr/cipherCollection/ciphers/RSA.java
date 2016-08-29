@@ -35,13 +35,15 @@ public class RSA extends Cipher {
 	 **/
 	private int d;
 	
+	private Character[] wordCharacters;
+	
 	public RSA(){
 		super();
 	}
 	
 	@Override
 	public void encrypt(String word) {
-		
+
 	}
 
 	@Override
@@ -222,6 +224,18 @@ public class RSA extends Cipher {
 			b = tmp % b;
 		}
 		return b;
+	}
+	
+	/**Stores the letters of the message in a character array.
+	 * 
+	 */
+	@Override
+	public void setWordCharacters(String message){
+		Character[] wordCharacters = new Character[message.length()];
+		message.toUpperCase();
+		for(int i = 0; i < message.length(); i++){
+			wordCharacters[i] = message.charAt(i);
+		}
 	}
 	
 	public static int fastModExp(int message, int mod, int exp){

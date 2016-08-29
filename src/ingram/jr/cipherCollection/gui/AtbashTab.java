@@ -10,6 +10,8 @@ import ingram.jr.cipherCollection.ciphers.Atbash;
 
 /** Constructs Atbash tabs for CipherCollectionGUI of the developed ciphers.
  * @author JRIngram
+ * @version 1.0.0
+ * @since 0.2.0
  * @see CollectionGUI
  * @see Tab
  * @see Atbash

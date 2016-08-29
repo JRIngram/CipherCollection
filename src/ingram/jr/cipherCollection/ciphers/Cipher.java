@@ -4,6 +4,7 @@ package ingram.jr.cipherCollection.ciphers;
  * 
  * @author JRIngram
  * @version 1.0.0
+ * @since 0.1.0
  */
 public abstract class Cipher {
 	protected final String[] alphabet;
