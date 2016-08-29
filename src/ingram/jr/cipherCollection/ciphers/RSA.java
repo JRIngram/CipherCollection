@@ -1,5 +1,7 @@
 package ingram.jr.cipherCollection.ciphers;
 
+import java.util.ArrayList;
+
 public class RSA extends Cipher {
 	
 	/**
@@ -35,20 +37,41 @@ public class RSA extends Cipher {
 	 **/
 	private int d;
 	
-	private Character[] wordCharacters;
+	private ArrayList<Character> wordCharacters;
 	
 	public RSA(){
 		super();
+		wordCharacters = new ArrayList<Character>();
+		System.out.println("SET VALUES TO MINIMUMS WHEN DONE TESTING!");
+		p = 53;
+		q = 61;
+		n = 3233;
+		m = 3120;
+		e = 1013;
+		d = 77;
 	}
 	
 	@Override
 	public void encrypt(String word) {
-
+		StringBuilder sb = new StringBuilder();
+		setWordCharacters(word);
+		for(int i = 0; i < wordCharacters.size(); i++){
+			sb.append(fastModExp(wordCharacters.get(i), n, e).toString());
+			sb.append(" ");
+		}
+		encryptedWord = sb.toString();
+		wordCharacters.clear();
 	}
 
 	@Override
 	public void decrypt(String wordToBeDecrypted) {
-		
+		String[] encryptedLetters = encryptedWord.split(" ");
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0; i < encryptedLetters.length; i++){
+			int charValue = fastModExp(Integer.parseInt(encryptedLetters[i]), n, d);
+			sb.append(Character.toChars(charValue));
+		}
+		encryptedWord = sb.toString();
 	}
 		
 	/**Sets the value of p.
@@ -231,14 +254,13 @@ public class RSA extends Cipher {
 	 */
 	@Override
 	public void setWordCharacters(String message){
-		Character[] wordCharacters = new Character[message.length()];
 		message.toUpperCase();
 		for(int i = 0; i < message.length(); i++){
-			wordCharacters[i] = message.charAt(i);
+			wordCharacters.add(message.charAt(i));
 		}
 	}
 	
-	public static int fastModExp(int message, int mod, int exp){
+	public static Integer fastModExp(int message, int mod, int exp){
 		try{
 			String exponent = Integer.toBinaryString(exp);
 			int l = 1;
