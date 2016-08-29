@@ -218,11 +218,8 @@ public class RSA extends Cipher {
 			b = tempA % b;
 			
 		}
-		System.out.println(prevX);
-		System.out.println(prevY);
 		if(prevX < 0){
 			prevX = originalB + prevX;
-			System.out.println("PREVX NOW: "+ prevX);
 		}
 		return prevX;
 	}
