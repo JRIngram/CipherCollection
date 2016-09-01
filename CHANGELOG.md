@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.4.0] Unreleased
+### Added
+ * A TakesUserTextInput superclass to remove duplicated code and increase modularity.
+
 ## [0.3.0] 2016-08-21
 ### Added
  * Vigenere Class with encryption and decryption functionality.
