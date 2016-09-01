@@ -17,14 +17,13 @@ public class TakesUserTextKeyTab extends Tab {
 	 * @param The result of the enforced check.
 	 * @param The label which prompts to user.
 	 */
-	public void enforceCorrectPQValues(boolean checkResult, JLabel checkLabel){
-		boolean correctInputs = checkResult;
-		if(correctInputs){
-			changeLabelToRed(!correctInputs, checkLabel);
-			setButtonEnabled(correctInputs);
+	public void enforceCheckValues(boolean checkResult, JLabel checkLabel){
+		if(checkResult){
+			changeLabelToRed(false, checkLabel);
+			setButtonEnabled(true);
 		}else{
-			changeLabelToRed(correctInputs, checkLabel);
-			setButtonEnabled(correctInputs);
+			changeLabelToRed(true, checkLabel);
+			setButtonEnabled(false);
 		}
 	}
 	
@@ -49,8 +48,8 @@ public class TakesUserTextKeyTab extends Tab {
 	 * Else, if the parameter is false, and the label is black, the label turns to red. 
 	 * @param correctInputs A boolean value to choose whether to set label to red or not (which turns label to black).
 	 */
-	private void changeLabelToRed(boolean correctInputs, JLabel label){
-		if(!correctInputs){
+	private void changeLabelToRed(boolean changeToRed, JLabel label){
+		if(changeToRed){
 			if(label.getForeground().equals(Color.BLACK)){
 				label.setForeground(Color.RED);
 			}

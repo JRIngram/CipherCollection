@@ -3,6 +3,7 @@ package ingram.jr.cipherCollection.gui;
 import ingram.jr.cipherCollection.ciphers.Vigenere;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**Creates the GUI tab for the Vigenere cipher.
  * @version 1.0.0
@@ -18,7 +21,7 @@ import javax.swing.JTextArea;
  * @see CollectionGUI
  * @see Vigenere
  * */
-public class VigenereTab extends Tab{
+public class VigenereTab extends TakesUserTextKeyTab{
 	private Vigenere vigenere;
 	private JPanel vigenereKeyInput;
 	private JLabel vigenereKeyPrompt;
@@ -33,6 +36,7 @@ public class VigenereTab extends Tab{
 		vigenere = new Vigenere();
 		vigenereKeyInput = new JPanel(new BorderLayout());
 		vigenereKeyPrompt = new JLabel("Enter an alphabetical string:");
+		vigenereKeyPrompt.setForeground(Color.BLACK);
 		vigenereKeyBox = new JTextArea("b");
 		vigenere.setKeyCharacters(vigenereKeyBox.getText());
 		vigenere.encrypt(cipherInputBox.getText());
@@ -49,6 +53,37 @@ public class VigenereTab extends Tab{
 		vigenereKeyInput.add(vigenereKeyPrompt, BorderLayout.NORTH);
 		vigenereKeyBox.setLineWrap(true);
 		vigenereKeyBox.setWrapStyleWord(true);
+		vigenereKeyBox.getDocument().addDocumentListener(new DocumentListener(){
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				if(checkAlphabeticalKey(vigenereKeyBox.getText())){
+					System.out.println(checkAlphabeticalKey(vigenereKeyBox.getText()));
+					enforceCheckValues(true, vigenereKeyPrompt);
+				}
+				else{
+					System.out.println(checkAlphabeticalKey(vigenereKeyBox.getText()));
+					enforceCheckValues(false, vigenereKeyPrompt);
+				}
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				if(checkAlphabeticalKey(vigenereKeyBox.getText())){
+					System.out.println(checkAlphabeticalKey(vigenereKeyBox.getText()));
+					enforceCheckValues(true, vigenereKeyPrompt);
+				}
+				else{
+					System.out.println(checkAlphabeticalKey(vigenereKeyBox.getText()));
+					enforceCheckValues(false, vigenereKeyPrompt);
+				}
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				//Not used as plaintext document.
+			}
+			
+		});
 		keyScrollPane = new JScrollPane(vigenereKeyBox, 
 				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -84,6 +119,21 @@ public class VigenereTab extends Tab{
 			}
 			
 		});
+	}
+	
+	public boolean checkAlphabeticalKey(String key){
+		boolean checkResult = true;
+		for(int i = 0; i < key.length(); i++){
+			if(!Character.isLetter(key.charAt(i))){
+				return false;
+			}
+		}
+		if(key.equals("")){
+			return false;
+		}
+		else{
+			return checkResult;
+		}
 	}
 
 }
