@@ -121,6 +121,11 @@ public class VigenereTab extends TakesUserTextKeyTab{
 		});
 	}
 	
+	/** Checks if the key is no empty and contains only alphabetical characters.
+	 * 
+	 * @param key The key used in the Vigenere Cipher.
+	 * @return The result of the check.
+	 */
 	public boolean checkAlphabeticalKey(String key){
 		boolean checkResult = true;
 		for(int i = 0; i < key.length(); i++){
