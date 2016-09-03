@@ -17,8 +17,8 @@ public class CollectionGUI{
 	private JFrame mainframe;
 	private AtbashTab atbashTab;
 	private CaesarTab caesarTab;
+	private RSATab rsaTab;
 	private VigenereTab vigenereTab;
-	
 	/** Constructs GUI with tabs for each of the developed ciphers.
 	 * <p>Currently these Ciphers include:</p>
 	 * <ul>
@@ -33,9 +33,11 @@ public class CollectionGUI{
 		mainframe.setDefaultCloseOperation(0);
 		atbashTab = new AtbashTab();
 		caesarTab = new CaesarTab();
+		rsaTab = new RSATab();
 		vigenereTab = new VigenereTab();
 		tabs.add("Atbash", atbashTab.getTab());
 		tabs.add("Caesar", caesarTab.getTab());
+		tabs.add("RSA", rsaTab.getTab());
 		tabs.add("Vigenere", vigenereTab.getTab());
 		mainframe.add(tabs);
 		mainframe.pack();

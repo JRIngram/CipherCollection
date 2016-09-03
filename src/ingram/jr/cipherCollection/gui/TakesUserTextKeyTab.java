@@ -16,14 +16,17 @@ public class TakesUserTextKeyTab extends Tab {
 	 * 
 	 * @param The result of the enforced check.
 	 * @param The label which prompts to user.
+	 * @return Result of the check.
 	 */
-	public void enforceCheckValues(boolean checkResult, JLabel checkLabel){
+	public boolean enforceCheckValues(boolean checkResult, JLabel checkLabel){
 		if(checkResult){
 			changeLabelToRed(false, checkLabel);
 			setButtonEnabled(true);
+			return true;
 		}else{
 			changeLabelToRed(true, checkLabel);
 			setButtonEnabled(false);
+			return false;
 		}
 	}
 	
