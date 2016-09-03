@@ -34,7 +34,7 @@ public class Vigenere extends Cipher{
 	@Override
 	public void encrypt(String word) {
 		StringBuilder sb = new StringBuilder("");
-		setWordCharacters(word.toUpperCase());
+		setWordCharacters(word);
 		for(int i = 0; i < wordCharacters.length; i++){
 			if(wordCharacters[i].matches("[a-zA-Z]")){
 				Integer val = (characterValues.get(wordCharacters[i]) + (characterValues.get(keyCharacters[i % keyCharacters.length]))) % 26;

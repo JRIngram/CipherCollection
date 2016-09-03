@@ -2,8 +2,12 @@
 
 ## [0.4.0] Unreleased
 ### Added
- * A TakesUserTextInput superclass to remove duplicated code and increase modularity.
+ * A TakesUserTextInput superclass created to remove duplicated code and increase modularity.
  * Buttons no longer availabile in Vigenere Tab if non-alphabetical key added.
+
+### Changed
+ * setWordCharacters in the Cipher superclass now turns the parametered string into upper case letters.
+
 
 ## [0.3.0] 2016-08-21
 ### Added

@@ -62,6 +62,7 @@ public abstract class Cipher {
 	 * @param word The word are encrypting.
 	 */
 	public void setWordCharacters(String word){
+			word = word.toUpperCase();
 			wordCharacters = word.split("");		
 	}
 	

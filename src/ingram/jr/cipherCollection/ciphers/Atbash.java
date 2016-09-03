@@ -30,7 +30,7 @@ public class Atbash extends Cipher {
 	@Override
 	public void encrypt(String word){
 		StringBuilder sb = new StringBuilder();
-		setWordCharacters(word.toUpperCase());
+		setWordCharacters(word);
 		for(int i = 0; i < wordCharacters.length; i++){
 			boolean matched = false;
 			for(int c = 0; c < alphabet.length; c++){
