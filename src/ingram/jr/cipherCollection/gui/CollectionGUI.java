@@ -24,10 +24,11 @@ public class CollectionGUI{
 	 * <ul>
 	 * 	<li>Atbash</li>
 	 *  <li>Caesar</li>
+	 *  <li>Vigenere</li>
 	 * </ul>
 	 */
 	public CollectionGUI(){
-		mainframe = new JFrame("Cipher Collection\tV0.3.0");
+		mainframe = new JFrame("Cipher Collection\tV0.3.1");
 		mainframe.setMinimumSize(new Dimension(500,380));
 		tabs = new JTabbedPane();
 		mainframe.setDefaultCloseOperation(0);
