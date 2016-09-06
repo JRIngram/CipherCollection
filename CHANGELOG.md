@@ -1,6 +1,6 @@
 # Change Log
 
-## [0.4.0] Unreleased
+## [0.3.1] 2016-09-06
 ### Added
  * A TakesUserTextInput superclass created to remove duplicated code and increase modularity.
  * Buttons no longer availabile in Vigenere Tab if non-alphabetical key added.
