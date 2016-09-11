@@ -1,4 +1,4 @@
-define # CipherCollection
+# CipherCollection
 # Introduction
 ## About
 A collection of various ciphers/encryption techniques. Originally the ciphers within the project were individual programs, mostly created for programming exercises in various languages. The previous ciphers I have created have been standardised into a single Java application - the *CipherCollection*.
