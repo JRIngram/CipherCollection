@@ -66,14 +66,6 @@ public abstract class Cipher {
 			wordCharacters = word.split("");		
 	}
 	
-	/**Returns a specified letter from the alphabet
-	 * @param index The index of the letter we wish to retrieve. 
-	 * @return The letter of the alphabet.
-	 */
-	public String getAlphabetLetter(int index){
-		return alphabet[index];
-	}
-	
 	/**Returns encrypted word.
 	 * 
 	 * @return The word we've previously encrypted.
