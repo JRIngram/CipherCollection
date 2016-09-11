@@ -1,5 +1,10 @@
 # Change Log
 
+## [Unreleased]
+
+### Changed
+ * Removal of getAlphabetLetter in Cipher class.
+
 ## [0.3.1] 2016-09-06
 ### Added
  * A TakesUserTextInput superclass created to remove duplicated code and increase modularity.
