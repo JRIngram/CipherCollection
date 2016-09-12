@@ -53,9 +53,20 @@ The Cipher class also contains the abstract methods `encrypt(String word)` and `
   The `key` variable is set using the `setKey(int key)` method.
 
   For example:  
-  `caesar.setKey(1) caesar.encrypt(abcxyz)`, would set the `encryptedWord` variable to `BCDYZA`.  
-  `caesar.setKey(18) caesar.encrypt(example)`, would set the `encryptedWord` variable to `WPSEHDW`.
+  `caesar.setKey(1); caesar.encrypt(abcxyz)`, would set the `encryptedWord` variable to `BCDYZA`.  
+  `caesar.setKey(18); caesar.encrypt(example)`, would set the `encryptedWord` variable to `WPSEHDW`.
 
   [Visit here for more information](https://en.wikipedia.org/wiki/Caesar_cipher).
 
 ## Vigenere
+  The Vigenere Cipher can be viewed as a more advanced Caesar Cipher and, like the Caesar Cipher, contains a message and a key. Unlike the Caesar Cipher however the key is a String of alphabetical characters, the length of which should be equal or less than the length of the message we wish to encrypt.  
+  Each letter within the key is given a shift value, equal to their position in the `alphabet` array; the letter in the message that corresponds to the same position as the key letter (e.g. `message[0]` and `key[0]`) is shifted by the shift value of that letter.  
+
+  The `key` variable is set using the `setKeyCharacters(String key)` method, which sets the values in the String array `keyCharacters`. If the key length is less than the length of the message the key wraps.
+
+  For Example:  
+  `vigenere.setKeyCharacters("ab"); vigenere.encrypt("abcxyz")`, would set the `encryptedWord` variable to `ACCYYA`.  
+  `vigenere.setKeyCharacters("s"); vigenere.encrypt("example")`, would set the `encryptedWord` variable to `WPSEHDW`. This would be the same as:  
+  `caesar.setKey(18); caesar.encrypt(example)` as `s`'s shift value is 18.
+
+  [Visit here for more information](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher).
