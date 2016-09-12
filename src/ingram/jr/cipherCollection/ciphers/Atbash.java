@@ -19,7 +19,7 @@ public class Atbash extends Cipher {
 		//Sets the reverse alphabet.
 		int reverseCount = 0;
 		for(int i = 25; i >= 0; i--){
-			reverseAlphabet[reverseCount] = getAlphabetLetter(i);	
+			reverseAlphabet[reverseCount] = alphabet[i];	
 			reverseCount++; 
 		}
 	}
@@ -34,7 +34,7 @@ public class Atbash extends Cipher {
 		for(int i = 0; i < wordCharacters.length; i++){
 			boolean matched = false;
 			for(int c = 0; c < alphabet.length; c++){
-				if(wordCharacters[i].equals(getAlphabetLetter(c).toUpperCase())){
+				if(wordCharacters[i].equals(alphabet[c].toUpperCase())){
 					sb.append(reverseAlphabet[c]);
 					matched = true;
 					break;
