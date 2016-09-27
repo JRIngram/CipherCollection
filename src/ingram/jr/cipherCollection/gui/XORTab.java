@@ -28,7 +28,7 @@ public class XORTab extends TakesUserTextKeyTab {
 		keyPanel.add(keyLabel, BorderLayout.NORTH);
 		keyPanel.add(keyScrollPane, BorderLayout.CENTER);
 		
-		addCipherExplanation("HELLO!");
+		addCipherExplanation("Performs a binary XOR operation on each letter in the input and its corresponding letter in the key.");
 		createCoreButtons();
 		addInputOutputBoxes();
 		cipherIO.add(inputPanel, BorderLayout.NORTH);
