@@ -18,6 +18,7 @@ public class CollectionGUI{
 	private AtbashTab atbashTab;
 	private CaesarTab caesarTab;
 	private VigenereTab vigenereTab;
+	private XORTab xorTab;
 	
 	/** Constructs GUI with tabs for each of the developed ciphers.
 	 * <p>Currently these Ciphers include:</p>
@@ -35,9 +36,11 @@ public class CollectionGUI{
 		atbashTab = new AtbashTab();
 		caesarTab = new CaesarTab();
 		vigenereTab = new VigenereTab();
+		xorTab = new XORTab();
 		tabs.add("Atbash", atbashTab.getTab());
 		tabs.add("Caesar", caesarTab.getTab());
 		tabs.add("Vigenere", vigenereTab.getTab());
+		tabs.add("XOR", xorTab.getTab());
 		mainframe.add(tabs);
 		mainframe.pack();
 		mainframe.setVisible(true);
