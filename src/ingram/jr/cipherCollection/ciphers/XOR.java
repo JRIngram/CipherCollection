@@ -2,18 +2,13 @@ package ingram.jr.cipherCollection.ciphers;
 
 
 //TODO Add checks for stringToChar!
+
 public class XOR extends Cipher{
 	
 	private static Character[] keyCharacters;
 	
 	public XOR(){
 		super();
-		//TESTING
-		setKey("Hello");
-		for(char keyChar : keyCharacters){
-			System.out.println(keyChar);
-		}
-		encrypt("apple");
 	}
 		
 	@Override
@@ -22,9 +17,8 @@ public class XOR extends Cipher{
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0; i < wordCharacters.length; i++){
 			char wordChar = wordCharacters[i];
-			char keyChar = keyCharacters[i];
-			String encryptedChar = Integer.toBinaryString(wordChar ^ keyChar);
-			while(encryptedChar.length() != 8){
+			String encryptedChar = Integer.toBinaryString(wordChar ^ keyCharacters[i]);
+			while(encryptedChar.length() != 7){
 				encryptedChar = "0" + encryptedChar;
 			}
 			sb.append(encryptedChar + " ");
@@ -34,8 +28,16 @@ public class XOR extends Cipher{
 
 	@Override
 	public void decrypt(String wordToBeDecrypted) {
-		// TODO Auto-generated method stub
-		
+		String[] binaryLetters = wordToBeDecrypted.split(" ");
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0; i < binaryLetters.length; i++){	
+			Integer keyCharacter = (int) keyCharacters[i];
+			String keyCharacterBinaryString = Integer.toBinaryString(keyCharacter);
+			String decryptedVal = XOROperation(binaryLetters[i].toString(), keyCharacterBinaryString);
+			Character decryptedChar = (char) binaryToDecimal(decryptedVal);
+			sb.append(decryptedChar);
+		}
+		encryptedWord = sb.toString();
 	}
 	
 	public void setKey(String key){
@@ -68,5 +70,62 @@ public class XOR extends Cipher{
 			return stringCharacters;
 		}
 	} 
+	
+	/**
+	 * Performs an XOR between two binary Strings. 
+	 * @param binaryOne
+	 * @param binaryTwo
+	 * @return
+	 */
+	private String XOROperation(String binaryOne, String binaryTwo){
+		StringBuilder xorResult = new StringBuilder();
+		try{
+			//Checks if the two parameters are strings of the same length.
+			if(binaryOne.length() == binaryTwo.length()){
+				String[] binaryOneCharacters = binaryOne.split("");
+				String[] binaryTwoCharacters = binaryTwo.split("");
+				
+				for(int i = 0; i < binaryOne.length(); i++){
+					//Checks if the strings only contain 1s and 0s and assigns XOR operation. 
+					if((binaryOneCharacters[i].equals("0") || binaryOneCharacters[i].equals("1")) && (binaryTwoCharacters[i].equals("0") || binaryTwoCharacters[i].equals("1"))){
+						//If characters are the same: append 0; else append 1.
+						if(binaryOneCharacters[i].equals(binaryTwoCharacters[i])){
+							xorResult.append("0");
+						}else{
+							xorResult.append("1");
+						}
+					}else{
+						throw new IllegalArgumentException("Inputs must consist of only 0s and 1s!");
+					}	
+				}
+			}else{
+				throw new IllegalArgumentException("Inputs must be the same length!");
+			}
+			
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			xorResult.append("0000000");
+		}
+		return xorResult.toString();
+	}
+	
+	/** Converts a binary string to a decimal double.
+	 * 
+	 * @param binaryString A string of binary characters.
+	 * @return
+	 */
+	
+	private int binaryToDecimal(String binaryString){
+		String[] binaryCharacters = binaryString.split("");
+		Double decimalValue = new Double(0);
+		int powerCounter = 0;
+		for(int i = binaryCharacters.length - 1; i >= 0; i--){
+			if(binaryCharacters[i].equals("1")){
+				decimalValue = decimalValue + (Math.pow(2, powerCounter));
+			}
+			powerCounter++;
+		}
+		return decimalValue.intValue();
+	}
 
 }

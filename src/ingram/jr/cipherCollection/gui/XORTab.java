@@ -45,6 +45,9 @@ public class XORTab extends TakesUserTextKeyTab {
 		xor.encrypt(cipherInputBox.getText());
 		cipherOutputBox.setText(xor.getEncryptedWord());
 		
+		/**
+		 * Checks if the user's key is acceptable.
+		 */
 		keyInput.getDocument().addDocumentListener(new DocumentListener(){
 			@Override
 			public void insertUpdate(DocumentEvent e) {
@@ -71,10 +74,17 @@ public class XORTab extends TakesUserTextKeyTab {
 			
 		});
 		
+		/**
+		 * Checks if the user's cipher/plaintext is acceptable is acceptable. 
+		 */
 		cipherInputBox.getDocument().addDocumentListener(new DocumentListener(){
+			//Calculates how many characters there should be if the user is entering binary.
+			int letterNum = keyInput.getText().length();
+			int binaryLength = (letterNum - 1) + (letterNum * 7);
+			
 			@Override
 			public void insertUpdate(DocumentEvent e) {
-				if(cipherInputBox.getText().length() == keyInput.getText().length()){
+				if(cipherInputBox.getText().length() == keyInput.getText().length() || cipherInputBox.getText().length() == binaryLength){
 					enforceCheckValues(true, keyLabel);
 				}else{
 					enforceCheckValues(false, keyLabel);
@@ -83,7 +93,7 @@ public class XORTab extends TakesUserTextKeyTab {
  
 			@Override
 			public void removeUpdate(DocumentEvent e) {
-				if(cipherInputBox.getText().length() == keyInput.getText().length()){
+				if(cipherInputBox.getText().length() == keyInput.getText().length() || cipherInputBox.getText().length() == binaryLength){
 					enforceCheckValues(true, keyLabel);
 				}else{
 					enforceCheckValues(false, keyLabel);
@@ -98,11 +108,27 @@ public class XORTab extends TakesUserTextKeyTab {
 		
 		createCoreButtons();
 		
+		/**
+		 * When the encrypt button is pressed, the input box value is encrypted and displayed in the output box.
+		 */
 		encryptButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				xor.setKey(keyInput.getText());
 				xor.encrypt(cipherInputBox.getText());
+				cipherOutputBox.setText(xor.getEncryptedWord());
+			}
+			
+		});
+		
+		/**
+		 * When the decrypt button is pressed, the input box value is decrypted and displayed in the output box.
+		 */
+		decryptButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				xor.setKey(keyInput.getText());		
+				xor.decrypt(cipherInputBox.getText());
 				cipherOutputBox.setText(xor.getEncryptedWord());
 			}
 			
