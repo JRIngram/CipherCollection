@@ -1,9 +1,15 @@
 # Change Log
 
-## [Unreleased]
+## [0.4.0] 2016-10-16
+
+### Added
+ * XOR class with encryption and decryption functionality.
 
 ### Changed
  * Removal of getAlphabetLetter in Cipher class.
+
+### Removed
+ * Vigenere cipher printing to console the results of tests.
 
 ## [0.3.1] 2016-09-06
 ### Added
@@ -12,7 +18,6 @@
 
 ### Changed
  * setWordCharacters in the Cipher superclass now turns the parametered string into upper case letters.
-
 
 ## [0.3.0] 2016-08-21
 ### Added

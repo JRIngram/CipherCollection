@@ -1,6 +1,6 @@
 package ingram.jr.cipherCollection.gui;
 
-//TODO Check that the strings are only alphabetical!
+//TODO Check that the strings are only alphabetical or binary (allow more length for binary)!
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -21,9 +21,14 @@ public class XORTab extends TakesUserTextKeyTab {
 	private JLabel keyLabel;
 	private JTextArea keyInput;
 	private JScrollPane keyScrollPane;
+	private int binaryLength;
 	
+	/**
+	 * Constructs the tab for the XOR cipher.  
+	 */
 	public XORTab(){
 		XOR xor = new XOR();
+		binaryLength = 0; //Used to calculate the length of input if it
 		keyPanel = new JPanel(new BorderLayout());
 		keyLabel = new JLabel("Enter an alphabetical key the same length as the input.");
 		keyLabel.setForeground(Color.BLACK);
@@ -48,23 +53,15 @@ public class XORTab extends TakesUserTextKeyTab {
 		/**
 		 * Checks if the user's key is acceptable.
 		 */
-		keyInput.getDocument().addDocumentListener(new DocumentListener(){
+		keyInput.getDocument().addDocumentListener(new DocumentListener(){	
 			@Override
 			public void insertUpdate(DocumentEvent e) {
-				if(cipherInputBox.getText().length() == keyInput.getText().length()){
-					enforceCheckValues(true, keyLabel);
-				}else{
-					enforceCheckValues(false, keyLabel);
-				}		
+				setEnabledButtons();	
 			}
  
 			@Override
 			public void removeUpdate(DocumentEvent e) {
-				if(cipherInputBox.getText().length() == keyInput.getText().length()){
-					enforceCheckValues(true, keyLabel);
-				}else{
-					enforceCheckValues(false, keyLabel);
-				}	
+				setEnabledButtons();
 			}
 
 			@Override
@@ -77,27 +74,15 @@ public class XORTab extends TakesUserTextKeyTab {
 		/**
 		 * Checks if the user's cipher/plaintext is acceptable is acceptable. 
 		 */
-		cipherInputBox.getDocument().addDocumentListener(new DocumentListener(){
-			//Calculates how many characters there should be if the user is entering binary.
-			int letterNum = keyInput.getText().length();
-			int binaryLength = (letterNum - 1) + (letterNum * 7);
-			
+		cipherInputBox.getDocument().addDocumentListener(new DocumentListener(){			
 			@Override
-			public void insertUpdate(DocumentEvent e) {
-				if(cipherInputBox.getText().length() == keyInput.getText().length() || cipherInputBox.getText().length() == binaryLength){
-					enforceCheckValues(true, keyLabel);
-				}else{
-					enforceCheckValues(false, keyLabel);
-				}		
+			public void insertUpdate(DocumentEvent e){
+				setEnabledButtons();
 			}
  
 			@Override
-			public void removeUpdate(DocumentEvent e) {
-				if(cipherInputBox.getText().length() == keyInput.getText().length() || cipherInputBox.getText().length() == binaryLength){
-					enforceCheckValues(true, keyLabel);
-				}else{
-					enforceCheckValues(false, keyLabel);
-				}	
+			public void removeUpdate(DocumentEvent e){
+				setEnabledButtons();
 			}
 
 			@Override
@@ -133,5 +118,28 @@ public class XORTab extends TakesUserTextKeyTab {
 			}
 			
 		});
+	}
+	
+	/**
+	 * Checks if the input in the input box is a binary string or alphabetical
+	 * If binary: encrypt button is disabled and checks if string is the binary length.
+	 * If alphabetical: decrypt is disabled and checks if the string and key are the same length. 
+	 */
+	private void setEnabledButtons(){
+		int letterNum = keyInput.getText().length();
+		int spaces = letterNum - 1;
+		binaryLength = (letterNum - 1) + (letterNum * 7);
+		if(cipherInputBox.getText().length() == keyInput.getText().length()
+				&& cipherInputBox.getText().matches("^[a-zA-Z]+$")){
+			enforceCheckValues(true, keyLabel);
+			decryptButton.setEnabled(false);
+		}else if((cipherInputBox.getText().length() == binaryLength 
+				&& cipherInputBox.getText().matches("^[01 ]+$"))
+				&& cipherInputBox.getText().split(" ").length - 1 == spaces){
+			enforceCheckValues(true, keyLabel);
+			encryptButton.setEnabled(false);
+		}else{
+			enforceCheckValues(false, keyLabel);
+		}
 	}
 }

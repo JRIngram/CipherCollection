@@ -57,11 +57,9 @@ public class VigenereTab extends TakesUserTextKeyTab{
 			@Override
 			public void insertUpdate(DocumentEvent e) {
 				if(checkAlphabeticalKey(vigenereKeyBox.getText())){
-					System.out.println(checkAlphabeticalKey(vigenereKeyBox.getText()));
 					enforceCheckValues(true, vigenereKeyPrompt);
 				}
 				else{
-					System.out.println(checkAlphabeticalKey(vigenereKeyBox.getText()));
 					enforceCheckValues(false, vigenereKeyPrompt);
 				}
 			}
@@ -69,7 +67,6 @@ public class VigenereTab extends TakesUserTextKeyTab{
 			@Override
 			public void removeUpdate(DocumentEvent e) {
 				if(checkAlphabeticalKey(vigenereKeyBox.getText())){
-					System.out.println(checkAlphabeticalKey(vigenereKeyBox.getText()));
 					enforceCheckValues(true, vigenereKeyPrompt);
 				}
 				else{

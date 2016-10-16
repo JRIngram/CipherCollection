@@ -1,8 +1,6 @@
 package ingram.jr.cipherCollection.ciphers;
 
 
-//TODO Add checks for stringToChar!
-
 public class XOR extends Cipher{
 	
 	private static Character[] keyCharacters;
@@ -10,11 +8,14 @@ public class XOR extends Cipher{
 	public XOR(){
 		super();
 	}
-		
+	
+	/**
+	 * Encrypts the input string by turning the input string and key into binary strings and performing an XOR operation on them.
+	 */
 	@Override
 	public void encrypt(String word) {
 		Character[] wordCharacters = stringToCharArray(word);
-		StringBuilder sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder("");
 		for(int i = 0; i < wordCharacters.length; i++){
 			char wordChar = wordCharacters[i];
 			String encryptedChar = Integer.toBinaryString(wordChar ^ keyCharacters[i]);
@@ -25,7 +26,10 @@ public class XOR extends Cipher{
 		}
 		encryptedWord = sb.toString();
 	}
-
+	
+	/**
+	 * Decrypts the input string by turning the key into a binary string and performing an XOR operation between the input and key and turning the output into the respective character value.
+	 */
 	@Override
 	public void decrypt(String wordToBeDecrypted) {
 		String[] binaryLetters = wordToBeDecrypted.split(" ");
@@ -40,6 +44,10 @@ public class XOR extends Cipher{
 		encryptedWord = sb.toString();
 	}
 	
+	/**
+	 * Sets the characters of the key and stores each character in a char array.
+	 * @param key The string to be converted to a char array and stored in keyCharacters[]
+	 */
 	public void setKey(String key){
 		keyCharacters = stringToCharArray(key);
 	}
@@ -114,7 +122,6 @@ public class XOR extends Cipher{
 	 * @param binaryString A string of binary characters.
 	 * @return
 	 */
-	
 	private int binaryToDecimal(String binaryString){
 		String[] binaryCharacters = binaryString.split("");
 		Double decimalValue = new Double(0);

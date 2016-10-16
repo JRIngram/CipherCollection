@@ -70,3 +70,15 @@ The Cipher class also contains the abstract methods `encrypt(String word)` and `
   `caesar.setKey(18); caesar.encrypt(example)` as `s`'s shift value is 18.
 
   [Visit here for more information](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher).
+
+## XOR Cipher
+  The XOR cipher works by converting the input string and the key (of the same length) into binary strings and performing an XOR operation between each respective character. The key variable is set using `setKey(String key)` with the key being an alphabetical string. An example of an XOR operation would be (assuming `a = 0001 b = 0010 c = 0011`):
+```
+0001 (a, the plaintext)
+0010 (b, the key)
+-----
+0011 (c the encrypted text)
+```
+  As we can see, if we were to use the same key and perform an XOR operation on the encrypt text, the plaintext would be produced.
+
+  [Visit here for more information](https://en.wikipedia.org/wiki/XOR_cipher#Example).
